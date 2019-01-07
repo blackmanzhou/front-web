@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Header>
+        <OGHeader transactionID="2d76e7f0-084a-4ffe-ab4c-b874e402d836" timeStamp="2004-10-11T17:52:52.8043750-
+04:00" xmlns ="http://webservices.micros.com/og/4.0/Core/">
+            <Origin entityID="MYRMB" systemType="PMS" organizationID="WRM"/>
+            <Destination entityID="PTS" systemType="PTS"/>
+        </OGHeader>
+    </soap:Header>
+    <soap:Body>
+        <ReservationNotificationRequest 
+            xmlns="http://webservices.micros.com/og/4.2/Partner/Reservation.wsdl">
+            <Reservation reservationAction="CHECKIN" reservationStatus="RESERVED" marketSegment="PH" insertUser="CASINO">
+                <UniqueIDList 
+                    xmlns="http://webservices.micros.com/og/4.2/Reservation/">
+                    <UniqueID type="INTERNAL" 
+                        xmlns="http://webservices.micros.com/og/4.0/Common/">49690
+                                        
+                    </UniqueID>
+                </UniqueIDList>
+                <RoomStays xmlns ="http://webservices.micros.com/og/4.2/Reservation/">
+                    <RoomStay 
+                        xmlns="http://webservices.micros.com/og/4.2/HotelCommon/">
+                        <RatePlans >
+                            <RatePlan ratePlanCode="NEW"/>
+                        </RatePlans >
+                        <RoomTypes>
+                            <RoomType roomTypeCode="10084" numberOfUnits ="1"/>
+                        </RoomTypes >
+                        <RoomRates>
+                            <RoomRate roomTypeCode="10084" ratePlanCode="NEW">
+                                <Rates>
+                                    <Rate>
+                                        <Base>200</Base>
+                                    </Rate>
+                                </Rates>
+                            </RoomRate>
+                        </RoomRates>
+                        <GuestCounts>
+                            <GuestCount ageQualifyingCode="ADULT" count="1"/>
+                            <GuestCount ageQualifyingCode="CHILD" count="0"/>
+                        </GuestCounts >
+                        <TimeSpan>
+                            <StartDate>2004-01-23T00:00:00.0000000-05:00</StartDate>
+                            <EndDate>2004-01-25T00:00:00.0000000-05:00</EndDate>
+                        </TimeSpan>
+                        <Guarantee guaranteeType="DB"/>
+                        <HotelReference chainCode="CHA" hotelCode="URUGUAY">Opera Demo Hotel,Small</HotelReference>
+                        <Total>400</Total>
+                        <ResGuestRPHs>
+                            <ResGuestRPH RPH="0"/>
+                        </ResGuestRPHs>
+                    </RoomStay>
+                </RoomStays>
+                <ResGuests 
+                    xmlns="http://webservices.micros.com/og/4.2/Reservation/">
+                    <ResGuest resGuestRPH="0">
+                        <Profiles>
+                            <Profile 
+                                xmlns="http://webservices.micros.com/og/4.2/Name/">
+                                <ProfileIDs>
+                                    <UniqueID type="INTERNAL" 
+                                        xmlns="http://webservices.micros.com/og/4.0/Common/">45742
+                                                                        
+                                    </UniqueID>
+                                </ProfileIDs >
+                                <Customer>
+                                    <PersonName>
+                                        <firstName 
+                                            xmlns="http://webservices.micros.com/og/4.0/Common/">Test
+                                                                                
+                                        </firstName>
+                                        <lastName 
+                                            xmlns="http://webservices.micros.com/og/4.0/Common/">Profile
+                                                                                
+                                        </lastName>
+                                    </PersonName>
+                                </Customer>
+                                <Memberships>
+                                    <NameMembership>
+                                        <membershipType 
+                                            xmlns="http://webservices.micros.com/og/4.0/Common/">WYNN
+                                                                                
+                                        </membershipType>
+                                        <membershipNumber 
+                                            xmlns="http://webservices.micros.com/og/4.0/Common/">81301463
+                                                                                
+                                        </membershipNumber>
+                                    </NameMembership>
+                                </Memberships>
+                            </Profile>
+                        </Profiles>
+                    </ResGuest>
+                </ResGuests>
+            </Reservation>
+        </ReservationNotificationRequest>
+    </soap:Body>
+</soap:Envelope>
