@@ -22,7 +22,7 @@
 [简书](http://jianshu.com)
 
 #### 图片
-![头像](http://git.augmentum.com.cn/uploads/-/system/user/avatar/1176/avatar.png, "小黄人")
+![头像](https://lc-api-gold-cdn.xitu.io/14868d18eabae4a6fbb5.jpg)
 
 #### 列表
 -------------------------------
