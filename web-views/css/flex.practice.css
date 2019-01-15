@@ -1,3 +1,10 @@
+.split {
+    width: 100%;
+    height: 1px;
+    background-color: #303133;
+    margin: 5px 0 5px 0;
+}
+
 .parent {
     background-color: #409EFF;
     width: 100px;
@@ -12,3 +19,9 @@
     width: 50px;
     height: 50px;
 }
+
+.custom_icons {
+    display: flex;
+    flex-direction: row;
+}
+
