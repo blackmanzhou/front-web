@@ -5,9 +5,22 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<title>新东方学生成长之旅</title>
-		<link rel="stylesheet" href="../css/xdf.css" />
+		<link rel="stylesheet" href="../css/xdf.css" type="text/css" />
 	</head>
 	<body>
+    <div class="login-page">
+      <div class="error-msg">
+        <img src="../imgs/error.png" alt="" style="height:100%;padding:10px">
+        <span style="color:#F56C6C; padding:10px">学员姓名或学员号错误。。。</span>
+      </div>
+      <div class="login-form">
+         <div>
+            <p><input type="text" placeholder="姓名" id="stuName" class="login-items" onkeypress="inputText()"></p>
+            <p><input type="text" placeholder="学员号" id="stuNO" class="login-items" onkeypress="inputText()"></p>
+            <p><input type="button" class="login-btn" id="loginBtn" value="查找学员"></p>
+         </div>
+      </div>
+    </div>
 		<div class="page1">
 			<img class="page1-image" src="../imgs/firstpage.jpg" alt="">
 			<div class="page1-center">
@@ -28,7 +41,9 @@
 			</div>
 			<p><img src="https://www.campusyun.com/campus/APP/szbgs_xw/Web/Home/images/jiantou.png" alt="" id="zouhua"/></p>
 			<div class="page1-logo">
-				<img style="width: 88px;height:40px" src="../imgs/XDFLOGO.png" alt="">
+				<div>
+          <img style="width: 88px;height:40px" src="../imgs/XDFLOGO.png" alt="">
+        </div>
 			</div>
 		</div>
 		<div class="page2" style="display:none;">
@@ -215,7 +230,7 @@
 					<div class="stzkContainer">
 						<div class="study-process">
 							<p>				
-								<span style="display: flex"><img src="../imgs/add.png" alt="" style="height:25px;width:25px;margin-right:20px"><span>2019年度</span></span>
+								<span style="display: flex;align-items:center"><img src="../imgs/add.png" alt="" style="height:25px;width:25px;margin-right:20px"><span>2019年度</span></span>
 							</p>
 							<p style="padding-left: 25%">寒假</p>
 							<p style="padding-left: 35%">三年级致高英语班</p>
@@ -267,6 +282,22 @@
 					flag = 1;
 				})				
 			}
-		})
+    })
+    
+    $('#loginBtn').click(function(){
+      var stuName = document.getElementById('stuName').value;
+      var stuNO = document.getElementById('stuNO').value;
+
+      if (stuName === 'tom' && stuNO == 123){
+        $('.login-page').remove();
+        $('.page1').css({'z-index': '3'});
+      } else {
+        $('.error-msg').css({'visibility':'visible'})
+      }
+    })
+
+    function inputText(){
+      $('.error-msg').css({'visibility':'hidden'})
+    }
 	</script>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    function printPage(){
+      var printElement = document.getElementById("printContent");
+      document.body.innerHTML = printElement.innerHTML;
+      window.print();
+    }   
+  </script>
+</head>
+<style type="text/css">
+.content {
+  display: flex;
+  flex-direction: column;
+}
+.index {
+  font-size: 28px;
+  margin: 0 10px 0 5px;
+}
+@media print {
+  .index {
+    float:left;
+  }
+}
+
+
+
+</style>
+
+<body>
+  <div class="content" id="printContent">
+    <div class="index">1.</div>
+    <div class="question">Where are you now?</div>
+  </div>
+  <div class="noprint"><input type="button" value="打印" onclick="printPage()"></div>
+</body>
+</html>
