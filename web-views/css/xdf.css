@@ -199,9 +199,21 @@ img{
     color: #9996CD;
 }
 
+/*学习历程*/
+.study-process {
+    margin-top:20%
+}
+.study-process>p:first-child{
+    font-size: 20px
+}
+
+.study-process>p{
+    padding: 5px;
+}
+
 /*瀛︽牎鐨勬垚缁╁垪琛�*/
 .stzkContainer{
-	width:80%;
+	width:90%;
 	margin:0 auto;
 	font-size:15px;
 	color:#9996CD;
