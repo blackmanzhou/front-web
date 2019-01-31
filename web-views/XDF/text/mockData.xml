@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lxlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<lx studentName="刘书翰">
+		<studentCode>stu123456</studentCode>
+		<classCode>pm456789</classCode>
+		<shareURL>http://localhost:3001/test/image/share</shareURL>
+		<classRoomScore>80</classRoomScore>
+		<starShineComment>你很棒</starShineComment>
+		<classroomDiscipline>5</classroomDiscipline>
+		<comprehensionAbility>5</comprehensionAbility>
+		<applicationAbility>5</applicationAbility>
+		<initiative>5</initiative>
+		<Attention>5</Attention>
+		<exclusiveComment>你上课认真听讲</exclusiveComment>
+		<uniquekeyword>认真</uniquekeyword>
+		<uniqueURL>无</uniqueURL>
+		<book1>爱的教育</book1>
+		<book2>爱的聆听</book2>
+		<wonderfulMomentURL1>http://localhost:3001/test/image/jingcai1</wonderfulMomentURL1>
+		<wonderfulMomentURL2>http://localhost:3001/test/image/jingcai1</wonderfulMomentURL2>
+		<wonderfulMomentURL3>http://localhost:3001/test/image/jingcai1</wonderfulMomentURL3>
+		<wonderfulMomentURL4>http://localhost:3001/test/image/jingcai1</wonderfulMomentURL4>
+		<wonderfulMomentURL5>http://localhost:3001/test/image/jingcai1</wonderfulMomentURL5>
+		<wonderfulMomentURL6>http://localhost:3001/test/image/jingcai1</wonderfulMomentURL6>
+		<wonderfulMomentURL7>http://localhost:3001/test/image/jingcai1</wonderfulMomentURL7>
+		<wonderfulMomentURL8>http://localhost:3001/test/image/jingcai1</wonderfulMomentURL8>
+		<wonderfulMomentURL9>http://localhost:3001/test/image/jingcai1</wonderfulMomentURL9>
+		<wonderfulMomentURL10>http://localhost:3001/test/image/jingcai1</wonderfulMomentURL10>
+		<learningProcess>你上课认真听讲</learningProcess>
+	</lx>
+	
+</lxlist>
