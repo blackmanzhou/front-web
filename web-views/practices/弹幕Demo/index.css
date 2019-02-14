@@ -19,6 +19,7 @@ body {
 }
 
 #danmuArea .danmuItem {
+    position: fixed;
     font-size: 25px;
     color: #f47920;
 }

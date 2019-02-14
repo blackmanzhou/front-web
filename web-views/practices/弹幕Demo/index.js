@@ -12,5 +12,7 @@ window.onload = function() {
     for(let i = 0; i < danmuItems.length; i ++) {
         let elemment = danmuItems[i]
         console.log(elemment)
+        const eleWidth = elemment.style.width
+        elemment.style.left = `${wH - eleWidth}px`
     }
 }
