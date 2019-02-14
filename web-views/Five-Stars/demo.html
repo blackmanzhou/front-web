@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>五星好评</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+  <ul class="cleanfloat">
+    <li>&#9733;</li>
+    <li>&#9733;</li>
+    <li>&#9733;</li>
+    <li>&#9733;</li>
+    <li>&#9733;</li>
+  </ul>
+  <style>
+    .cleanfloat::after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0;
+    }
+
+    /*清浮动*/
+
+    ul li {
+      list-style: none;
+      float: left;
+      font-size: 30px;
+      margin: 5px;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    /*五角星样式*/
+
+    .hs,
+    .cs {
+      color: #FFD700;
+    }
+
+    /*五角星点击后样式*/
+  </style>
+  <script>
+    $(function () {
+      $("ul li").hover(function () {
+        $(this).addClass('hs');
+        $(this).prevAll().addClass('hs');
+      }, function () {
+        $(this).removeClass('hs');
+        $(this).prevAll().removeClass('hs');
+      })
+
+      $("ul li").click(function () {
+        $(this).addClass('cs');
+        $(this).prevAll().addClass('cs');
+        $(this).nextAll().removeClass('cs');
+      })
+    })
+  </script>
+</body>
+
+</html>
