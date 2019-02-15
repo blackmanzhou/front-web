@@ -15,6 +15,7 @@ body {
 #danmuArea {
     height: 20px;
     width: 100%;
+    overflow: hidden;
     /* background-color: #cccccc; */
 }
 
@@ -22,6 +23,7 @@ body {
     position: fixed;
     font-size: 25px;
     color: #f47920;
+    width: 100%;
 }
 
 #sendArea { 
