@@ -45,58 +45,18 @@ export default {
     background-color:#4e95ff;
 }
 
-.section-content {
-    width: 90%;
-    height: 90%;
-    margin: 0 auto;
-    color: #9996CD;
-    background-color: #fff;
-    font-weight: bold
-}
-
-.section-content .title {
-    width: 100%;
-    text-align: center;
-    font-size: 1.25rem;
-    margin-top: .625rem;
-}
-.section-content .title>span {
-    display: inline-block;
-    border-bottom: 8px solid #DAE9F9;
-    line-height: .4;
-    width: 40%;
-}
-
-.section-content .btn-close {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    width: 3rem;
-}
-
-.section-content .btn-close>img {
-    width: 100%
-}
-
-.section-content .content-area {
-    height: 85%;
-    overflow: auto;
-    padding: 1.625rem;
-    font-size: 0.95rem;
-}
-
-.content-area>div:first-child {
+#NewStarShine-Page .content-area>div:first-child {
     margin: 20% auto;
     font-size: 1.125rem
 }
-.content-area>div:last-child {
+#NewStarShine-Page .content-area>div:last-child {
     line-height: 2rem
 }
-.content-area>div:last-child>p:last-child {
+#NewStarShine-Page .content-area>div:last-child>p:last-child {
     text-indent: 2rem
 }
 
-.content-area .student-name {
+#NewStarShine-Page .content-area .student-name {
     font-size: 1.25rem;
     padding-right: 0.625rem;
 }
