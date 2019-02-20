@@ -1,6 +1,28 @@
 
 <!DOCTYPE html>
 <html>
+<!--集团统计开始-->
+<!--neworiental全站异步 google分析开始-->
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20005525-1']);
+  _gaq.push(['_setDomainName', '.xdf.cn']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_setAllowHash', false]);
+  _gaq.push(['_addOrganic', 'baidu', 'word']);
+  _gaq.push(['_addOrganic', '360', 'q']);
+  _gaq.push(['_addOrganic', 'so.com', 'q']); 
+  _gaq.push(['_addOrganic', 'soso', 'w']);
+  _gaq.push(['_addOrganic', 'yodao', 'q']);
+  _gaq.push(['_addOrganic', 'sogou', 'query']);
+  _gaq.push(['_addOrganic', 'gougou', 'search']);
+  _gaq.push(['_addOrganic', 'so.360.cn', 'q']);
+  _gaq.push(['_addOrganic', 'haosou', 'q']);
+  _gaq.push(['_setLocalGifPath', 'http://ads.staff.xdf.cn/_.gif']);
+  _gaq.push(['_setLocalRemoteServerMode']);
+  _gaq.push(['_trackPageview']);
+</script>
+<!-- google分析结束-->    
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -8,18 +30,27 @@
 		<link rel="stylesheet" href="./css/index.css" type="text/css" />
 	</head>
 	<body>
-    <div class="login-page">
-      <div class="error-msg">
+	
+    <div class="login-page">  
+	
+	<div  style=" margin-top:150px;" class="login-page-hexin">
+	  <image src="./imgs/logox.png" width="180px" height="100px" style="padding-bottom: 25px;">
+      <div class="login-form">
+         <div  style= "text-align:center">
+         
+            <p><input type="text" placeholder="请输入学员编号" id="stuNO" class="login-items" onkeypress="inputText()"></p>
+			   <p><input type="text" placeholder="请输入手机号后4位" id="stuName" class="login-items" onkeypress="inputText()"></p>
+			<br/>
+            <p><input type="button" class="login-btn" id="loginBtn" value="查看报告"></p>
+         </div>
+		 
+      </div>
+	    <div class="error-msg">
         <img src="./imgs/error.png" alt="" style="height:100%;padding:10px">
         <span style="color:#F56C6C; padding:10px">学员姓名或学员号错误。。。</span>
       </div>
-      <div class="login-form">
-         <div>
-            <p><input type="text" placeholder="姓名" id="stuName" class="login-items" onkeypress="inputText()"></p>
-            <p><input type="text" placeholder="学员号" id="stuNO" class="login-items" onkeypress="inputText()"></p>
-            <p><input type="button" class="login-btn" id="loginBtn" value="查找学员"></p>
-         </div>
-      </div>
+	  <div style="color:white">苏州新东方学校</div>
+	  </div>
     </div>
 		<div class="page1">
 			<img class="page1-image" src="./imgs/firstpage.jpg" alt="">
@@ -45,6 +76,7 @@
           			<img style="width: 88px;height:40px;display: none;" id="XDFLogo" src="./imgs/XDFLOGO.png" alt="">
         		</div>
 			</div> -->
+		
 		</div>
 		
 		<div class="page2" style="display:none;">
@@ -71,7 +103,7 @@
 			<div class="footer">
 				<ul>
 					<li id="tongzhi"><img src="./imgs/processway.png" alt="" /></li>
-					<li id="zuoye"><img src="./imgs/jingcaishunjian.png" alt="" /></li>
+					<li id="zuoye"><img src="./imgs/jingcaishunjian1.png" alt="" /></li>
 					<li id="fenxiang"><img src="./imgs/fenxiang.png" alt="" /></li>
 				</ul>
 			</div>
@@ -150,21 +182,21 @@
 				<div class="section sec2">
 					<d></d>
 					<p><span>助力成长</span></p>
-					<p style="font-size: 15px;color: #9996CD">推荐英语提升读物</p>
+					<p style="font-size: 15px;color: #9996CD">推荐	提升读物</p>
 					<!--每位学员都是一样的-->
 					<div class="stzkContainer" id="recommendBooks">
-						<div style="margin-top:20%;height: 150px;">
-							<ul>
-								<li class="book-title">《英语趣味阅读：三年级》</li>
-								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原汁原味的英语！棒棒哒的趣味英语！适合三年级小学生阅读。每月一章，与课堂教学大同步，每章节四周，每周都有”趣味阅读“、”名师阅读“、”周末英语乐园“三个版块。</li>		  							
-							</ul>
-						</div>
-						<div style="margin-top:20%;height: 150px;">
-							<ul>
-								<li class="book-title">《英语小故事课后读：三年级》</li>
-								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为适合小学生学习使用，本书在内容选取、语言风格和体例编排上都花费了许多心思，始终贯穿”玩中学“的理念：以小学生的日常生活学习为主线进行编排，是英语学习在日常生活中自然而然滴实现。</li>		        			
-							</ul>
-						</div>
+						<!-- <div style="margin-top:20%;height: 150px;"> -->
+							<!-- <ul> -->
+								<!-- <li class="book-title">《英语趣味阅读：三年级》</li> -->
+								<!-- <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原汁原味的英语！棒棒哒的趣味英语！适合三年级小学生阅读。每月一章，与课堂教学大同步，每章节四周，每周都有”趣味阅读“、”名师阅读“、”周末英语乐园“三个版块。</li>		  							 -->
+							<!-- </ul> -->
+						<!-- </div> -->
+						<!-- <div style="margin-top:20%;height: 150px;"> -->
+							<!-- <ul id="book2"> -->
+								<!-- <li class="book-title">《英语小故事课后读：三年级》</li> -->
+								<!-- <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为适合小学生学习使用，本书在内容选取、语言风格和体例编排上都花费了许多心思，始终贯穿”玩中学“的理念：以小学生的日常生活学习为主线进行编排，是英语学习在日常生活中自然而然滴实现。</li>		        			 -->
+							<!-- </ul> -->
+						<!-- </div> -->
 					</div>
 					<span><img src="https://www.campusyun.com/campus/APP/szbgs_xw/Web/Home/images/closebtn.png" alt="" /></span>
 				</div>
@@ -179,7 +211,7 @@
 		        	<p><span>老师寄语</span></p>
 		        	<div class="stcjContainer">
 		        		<h3><label class="studentName">苏小新</label>同学</h3>
-		        		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable class="studentName">苏小新</lable>，你是一个聪明、可爱的孩子，关心集体，兴趣广泛。老师希望在寒假里，和好书交朋友吧！让它们陪你过一个充实快乐的假期。</p>
+		        		<p id="shareComment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable class="studentName">苏小新</lable>，你是一个聪明、可爱的孩子，关心集体，兴趣广泛。老师希望在寒假里，和好书交朋友吧！让它们陪你过一个充实快乐的假期。</p>
 		        	</div>
 		        	<img src="https://www.campusyun.com/campus/APP/szbgs_xw/Web/Home/images/03pingyu/qianjing.png" alt="" onclick="return false"/>
 		        	<span style="z-index:10;"><img src="https://www.campusyun.com/campus/APP/szbgs_xw/Web/Home/images/closebtn.png" alt="" /></span>
@@ -258,4 +290,19 @@
 	<script src="https://www.campusyun.com/campus/APP/szbgs_xw/Web/Home/js/src/jquery-3.2.0.min.js"></script>
 	<script type="text/javascript" src="http://www.jsons.cn/Down/jquery.xml2json.js"></script>
 	<script src="./js/index.js"></script>
+	 <!--google文件调用开始-->
+<script> (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'http://file.xdf.cn/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!--google文件调用结束-->
+<!--百度统计开始-->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe010d1faf316a4dbfe8639481a2a3f90' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!--百度统计结束-->
+<!--集团统计结束-->
 </html>

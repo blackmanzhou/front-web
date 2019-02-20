@@ -7,16 +7,18 @@ $(document).ready(function () {
 
 // 登录
 $('#loginBtn').click(function(){
-    var stuName = document.getElementById('stuName').value;
+    var stuName = document.getElementById('stuName').value;	
     var stuNO = document.getElementById('stuNO').value;
+	stuNO=stuNO.toUpperCase();
     $.ajax({
         type: 'GET',
-        url: `http://localhost:3001/download/image`,
+       url: 'http://suzhou.xdf.cn/zhuanti/share2019/text/mockData.xml',
+		 //   url: '/text/mockData.xml',
         dataType: 'xml',
         success: function(docxml) {
             var isRight = false;
             $(docxml).find('lx').each(function(){
-                var studentName = $(this).attr('studentName');
+                var studentName = $(this).find('uniqueURL').text();
                 var studentCode = $(this).find("studentCode").text(); 
                 if (stuName == studentName && stuNO == studentCode) {
                     $('.login-page').remove();
@@ -152,10 +154,13 @@ function initPage() {
     this.initPage5();
     this.initPage6();
     this.initPage7();
+	 this.initPage8();//何鑫加
+	  this.initPage9();//何鑫加
+	 
 }
 
 function initPage1() {
-    $('.studentCode').text(stuInfo.studentCode);
+    $('.studentCode').text(stuInfo.classCode);
     $('.studentName').text(stuInfo['@studentName']);
 }
 
@@ -194,12 +199,22 @@ function initPage6() {
 function initPage7() {
     $("#studentProcess").html(origanizateStudyProcessInnerHTML());
 }
+//帮力成长 何鑫加
+function initPage8(){
+	 $("#recommendBooks").html(origanizateGroupInnerHTML());
+	
+}
+//分享评语 何鑫加
+function initPage9(){
+	 $("#shareComment").html(stuInfo.shareComment);
+	
+}
 
 // 新光闪耀-课堂等级
 function mapGradeByScore(score) {
     const Grades = ['优秀','良好','中等','及格','不及格']
 
-    let sCore = score / 10;
+    let sCore = Math.round(score / 10);
     let gradeIndex = 0;
     switch(sCore) {
         case 10:
@@ -267,4 +282,45 @@ function origanizateStudyProcessInnerHTML() {
     }
 
     return innerHTMLString;
+}
+function origanizateGroupInnerHTML(){
+	const classStr = stuInfo.classCode;
+	 let innerHTMLString ="这里空空如也，去别处看看吧！";
+	if(classStr=="PEN605007")
+	{
+		innerHTMLString="	<div style='margin-top:20%;height: 150px;'>"+
+							"<ul>"+
+								"<li class='book-title'>哈佛阅读</li>"+
+								"<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 《阅读哈佛》一书以作者在哈佛大学的所见所闻为素材，以图文并茂的形式，集学术观察、生活体验、留学经历和热点透视为一体，有对哈佛大学众多名人的访谈，有对哈佛教育理念的思考，有对哈佛文化现象和大学生活的看法，也有作者对申请哈佛大学的建议，等等。</li>"+		  							
+							"</ul>"+
+						"</div><br/>"+
+						"<div style='margin-top:20%;height: 150px;'>"
+							+"<ul>"
+								+"<li class='book-title'>哈利波特英文版</li>"+
+								"<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;《哈利·波特》是英国作家J·K·罗琳（于1997～2007年所著的魔幻文学系列小说，共7部。其中前六部以霍格沃茨魔法学校为主要舞台，描写的是主人公——年轻的巫师学生哈利·波特在霍格沃茨前后六年的学习生活和冒险故事；第七本描写的是哈利·波特在第二次魔法界大战中在外寻找魂器并消灭伏地魔的故事。</li>"+	        			
+							"</ul>"
+						"</div>";
+		
+	}
+	if(classStr=="PM1J05008")
+	{
+				innerHTMLString="	<div style='margin-top:20%;height: 150px;'>"+
+							"<ul>"+
+								"<li class='book-title'>《数学帮帮忙》</li>"+
+								"<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“数学帮帮忙”系列的每一本书都会讲述一个发生在孩子身边的故事，由故事中出现的问题自然地引入一个数学知识，然后通过运用数学知识解决问题。比如，从帮助外婆整理散落的纽扣引出分类，从为小狗记录藏骨头的地点引出空间方位，从为造一座糖果小屋找材料学习加减法的计算等等。</li>"+		  							
+							"</ul><br/>"+
+						"</div><br/>"+
+						"<div style='margin-top:20%;height: 150px;'>"
+							+"<ul>"
+								+"<li class='book-title'>《神奇的数学》</li>"+
+								"<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;《神奇的数学:牛津教授给青少年的讲座》是作者索托伊在一系列针对青少年的数学普及讲座内容基础上汇集整理的一本数学科普书，介绍了一些数学中很有神秘色彩的知识，内容浅显易懂，语言生动活泼，很容易激发读者尤其是青少年读者了解数学的兴趣。</li>"+	        			
+							"</ul>"
+						"</div>";
+		
+	}
+	
+	return innerHTMLString;
+	
+	
+	
 }
