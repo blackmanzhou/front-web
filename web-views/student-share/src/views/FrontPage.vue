@@ -1,7 +1,8 @@
 <template>
     <div id='Front-Page'>
         <img class='header-area' src='../assets/imgs/homepage-titleimg.jpg' alt=''>
-        <div class='center-area'>
+        <v-touch v-on:swipeleft="goHomePage()">
+          <div class='center-area'>
             <div>
                 <img src='../assets/imgs/xinyao.png' alt=''>
             </div>
@@ -12,8 +13,9 @@
                     <li>苏小新</li>
                 </ul>
             </div>
-        </div>
-        <p @click='goHomePage()'><img src='../assets/imgs/arrow.png' alt='' id='twinkleArrow'/></p>
+          </div>
+        </v-touch>
+        <p><img src='../assets/imgs/arrow.png' alt='' id='twinkleArrow'/></p>
         <div class='footer-area'>
             <p>苏州新东方信息管理部</p>
             <p>Copyright © 2019 stsuzhou.xdf.cn</p>
@@ -30,31 +32,30 @@ export default {
         }
     },
     created() {
-        this.goHomePage()
+      
     },
     mounted: function () {
       let opacityValue = 0;
         let arrowElement = document.getElementById('twinkleArrow')
-        arrowElement.addEventListener('touchmove', function(e) {
-          console.log(111)
-        })
 
-        arrowElement.addEventListener('touchend', function(e) {
-            console.log(222)
-        })
         setInterval(() => {
             opacityValue += 0.1
-            
-            arrowElement.style.opacity = opacityValue
-            if (opacityValue > 1) {
-                opacityValue = 0
+
+            if (arrowElement) {
+              arrowElement.style.opacity = opacityValue
+              if (opacityValue > 1) {
+                  opacityValue = 0
+              }
             }
 
         }, 100)
     },
     methods: {
         goHomePage () {
-            this.$router.push('/home')
+          let router = this.$router
+          setTimeout(function() {
+            router.push('/home')
+          }, 300)    
         }
     }
 }
