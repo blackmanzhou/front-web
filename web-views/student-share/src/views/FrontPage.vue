@@ -30,23 +30,24 @@ export default {
         }
     },
     created() {
-        let opacityValue = 0;
+        this.goHomePage()
+    },
+    mounted: function () {
+      let opacityValue = 0;
+        let arrowElement = document.getElementById('twinkleArrow')
+        arrowElement.addEventListener('touchmove', function(e) {
+          console.log(111)
+        })
+
+        arrowElement.addEventListener('touchend', function(e) {
+            console.log(222)
+        })
         setInterval(() => {
             opacityValue += 0.1
-            let arrowElement = document.getElementById('twinkleArrow')
-            if (arrowElement) {
-                arrowElement.style.opacity = opacityValue
-                if (opacityValue > 1) {
-                    opacityValue = 0
-                }
-
-                arrowElement.addEventListener('touchmove', function(e) {
-                  console.log(111)
-                })
-
-                 arrowElement.addEventListener('touchend', function(e) {
-                   console.log(222)
-                })
+            
+            arrowElement.style.opacity = opacityValue
+            if (opacityValue > 1) {
+                opacityValue = 0
             }
 
         }, 100)
