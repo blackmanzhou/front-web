@@ -27,7 +27,7 @@ export default {
 .section-content .title {
     width: 100%;
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin-top: .625rem;
 }
 .section-content .title>span {
