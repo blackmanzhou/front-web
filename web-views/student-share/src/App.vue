@@ -49,7 +49,7 @@ export default {
 }
 
 .section-content .content-area {
-    height: 85%;
+    height: 80%;
     overflow: auto;
     padding: 1.625rem;
     font-size: 0.95rem;

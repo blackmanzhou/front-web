@@ -3,7 +3,7 @@
         <img class='header-area' src='../assets/imgs/homepage-titleimg.jpg' alt=''>
         <div class='center-area'>
             <div>
-                <img src='../assets/imgs/xinyao.png' style='height:150px' alt=''>
+                <img src='../assets/imgs/xinyao.png' alt=''>
             </div>
             
             <div>
@@ -39,6 +39,14 @@ export default {
                 if (opacityValue > 1) {
                     opacityValue = 0
                 }
+
+                arrowElement.addEventListener('touchmove', function(e) {
+                  console.log(111)
+                })
+
+                 arrowElement.addEventListener('touchend', function(e) {
+                   console.log(222)
+                })
             }
 
         }, 100)
@@ -56,50 +64,55 @@ export default {
     height: 100%;
     overflow: auto;
 }
-.header-area {
-    width: 100%
+#Front-Page .header-area {
+    width: 100%;
+    height: 40%
 }
-.center-area {
+#Front-Page .center-area {
     width: 100%;
     margin: 5% 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    height: 45%
 }
-.center-area>div {
+#Front-Page .center-area>div {
     padding: .5rem
 }
-.center-area>div>ul>li {
+#Front-Page .center-area>div:first-child>img{
+  height: 9rem;
+}
+#Front-Page .center-area>div>ul>li {
     text-align: center;
     font-size: 1.5rem;
     font-family: 黑体
 }
-.center-area>div>ul>li:first-child {
+#Front-Page .center-area>div>ul>li:first-child {
     color: #999;
     padding-bottom: 0.5rem
 }
-.center-area>div>ul>li:last-child {
+#Front-Page .center-area>div>ul>li:last-child {
     color: #FF9C13
 }
 
 #Front-Page #twinkleArrow{
-	width: 20px;
+	width: 2rem;
 	position: absolute;
 	left: 90%;
 	top: 60%;
 }
 
-.footer-area {
+#Front-Page .footer-area {
     position: absolute;   
     bottom: 0;
     width: 100%;
     text-align: center;
     color: #999;
 }
-.footer-area>p:first-child {
+#Front-Page .footer-area>p:first-child {
     font-size: .85rem
 }
-.footer-area>p:last-child {
+#Front-Page .footer-area>p:last-child {
     font-size: .75rem;
     padding: .25rem
 }

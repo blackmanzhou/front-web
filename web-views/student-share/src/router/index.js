@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import FrontPage from '@/views/FrontPage'
 import HomePage from '@/views/HomePage'
 import NewStarShinePage from '@/views/NewStarShinePage'
@@ -18,11 +17,6 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/index',
       name: 'FrontPage',
       component: FrontPage
     },

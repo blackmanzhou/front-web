@@ -54,7 +54,7 @@ export default {
     font-size: 1.125rem
 }
 #ExclusiveEnergy-Page .content-area>div:last-child {
-    line-height: 2rem
+    line-height: 2rem;
 }
 #ExclusiveEnergy-Page .content-area>div:last-child>p:last-child {
     text-indent: 2rem;
