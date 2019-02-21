@@ -28,11 +28,18 @@ export default {
     name: 'FrontPage',
     date() {
         return {
-
+            openid: ''
         }
     },
+    beforeCreate() {
+       const params = this.$route.query
+       if (params) {
+           this.openid = params.openid
+       }
+    },
+
     created() {
-      
+      this.render(this.openid)
     },
     mounted: function () {
       let opacityValue = 0;
@@ -56,6 +63,9 @@ export default {
           setTimeout(function() {
             router.push('/home')
           }, 300)    
+        },
+        render (openid) {
+
         }
     }
 }
