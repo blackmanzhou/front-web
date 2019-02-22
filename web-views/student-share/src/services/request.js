@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { resultMsg, resultCode } from '../common'
+import { resultMsg, resultCode } from '@/common'
 
 let request = {
     post: async function (url, data) {
@@ -16,18 +16,19 @@ let request = {
         if (url && params) {
             url += '?'
             for (let key in params) {
-                url += key + '=' + params[key]
+                url += key + '=' + (params[key]) + '&'
             }
 
             url = url.substring(0, url.lastIndexOf('&'))
+            
         }
-
+        console.log(url)
         const response = await Vue.http.get(url, null)
-        if (!response || !response.data) {
+        if (!response) {
             return { resultCode: resultCode.REQUEST_ERROR, resultMsg: resultMsg.REQUEST_ERROR }
         } else {
             return { resultCode: resultCode.OK, data: response.data }
-        }   
+        }    
     }
 }
 

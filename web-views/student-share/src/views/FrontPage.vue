@@ -9,8 +9,8 @@
             
             <div>
                 <ul>
-                    <li>PM5C0101023</li>
-                    <li>苏小新</li>
+                    <li>{{studentCode}}</li>
+                    <li>{{studentName}}</li>
                 </ul>
             </div>
           </div>
@@ -24,22 +24,45 @@
 </template>
 
 <script>
+import { API } from '@/services'
+import { mutation } from '@/store'
+
 export default {
     name: 'FrontPage',
-    date() {
+    data() {
         return {
-            openid: ''
+            openid: '',
+            schoolid: '',
+            pageInfo: null,
         }
     },
     beforeCreate() {
        const params = this.$route.query
        if (params) {
            this.openid = params.openid
+           this.schoolid = params.schoolid
        }
+
+       alert(JSON.stringify(params))
     },
 
-    created() {
-      this.render(this.openid)
+    async created() {
+      const accountInfo = await this.getStudentAccount()
+  
+      if (!accountInfo) {
+          window.location.href = 'http://wxpay.xdf.cn/silenceauthorize/view.do?schoolid=23&callid=25&parm=23'
+      } else {
+          const studentCode = accountInfo.studentcode
+          await this.render('SZS72921')
+      }
+    },
+    computed: {
+        studentName () {
+            return this.$store.state.student.studentName
+        },
+        studentCode () {
+            return this.$store.state.student.studentCode
+        }
     },
     mounted: function () {
       let opacityValue = 0;
@@ -61,11 +84,32 @@ export default {
         goHomePage () {
           let router = this.$router
           setTimeout(function() {
-            router.push('/home')
+            router.push('/process-way')
           }, 300)    
         },
-        render (openid) {
+        async render (studentCode) {
+            await this.getClassedByStudentCode(studentCode)
+            await this.getStudentBaseInfo(studentCode)
+        },
 
+        async getStudentAccount () {
+            let response = await API.featchStudentAccountInfo()
+            return response.data
+        },
+
+        async getClassedByStudentCode (studentCode) {
+            let response = await API.getProcessWayInfo(studentCode)
+            if (response && response.data) {
+                this.$store.commit(mutation.CLASSLIST, response.data.ClassList)
+            }
+           
+        },
+
+        async getStudentBaseInfo (studentCode) {
+            let response = await API.getStudentBaseInfo(studentCode)
+            if (response && response.data) {
+                this.$store.commit(mutation.STUDENT, response.data.Student)
+            }
         }
     }
 }

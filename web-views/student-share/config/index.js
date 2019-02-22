@@ -10,7 +10,23 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/third-party': {
+        target: 'http://testwx.staff.xdf.cn/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/third-party': '/'
+        }
+      },
+
+      '/web-api': {
+        target: 'http://localhost:59447/WebApi/StudentProcessShare',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/web-api': '/'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

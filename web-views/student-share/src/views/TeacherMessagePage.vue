@@ -4,14 +4,16 @@
             <p class="title"><span>老师寄语</span></p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
-                 <p><span class="student-name">秦宇涵</span>同学</p>
-                 <p>你是一个聪明、可爱的孩子，关心集体，兴趣广泛。老师希望在寒假里，和好书交朋友吧！让它们陪你过一个充实快乐的假期！</p>
+                 <p><span class="student-name">{{studentName || 'X X'}}</span>同学</p>
+                 <p>{{teacherEvaluation || '别着急，老师还没来得及夸你那！！！！'}}</p>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { API } from '@/services'
+import { mutation } from '@/store'
 export default {
     name: 'TeacherMessagePage',
     data () {
@@ -19,12 +21,28 @@ export default {
 
         }
     },
-    created () {
-
+    async created () {
+        await this.render()
+    },
+    computed: {
+        studentName() {
+            return this.$store.state.student.studentName
+        },
+        teacherEvaluation() {
+            return this.$store.state.teacherEvaluation
+        }
     },
     methods: {
         goHome () {
             this.$router.push('/home')
+        },
+        async render() {
+            const studentCode = this.$store.state.student.studentCode
+            const classCode = this.$store.state.currentClass.classCode
+            let response = await API.getTeacherMessageInfo(studentCode, classCode)
+            if (response) {
+                this.$store.commit(mutation.TEACHEREVALUATION, response.evaluation)
+            }
         }
     }
 }

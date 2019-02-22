@@ -5,7 +5,7 @@
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
               <ul>
-                <li><img src="../assets/imgs/share-page.jpg" alt=""></li>
+                <li><img :src="shareImg" alt=""></li>
               </ul>
             </div>
       </div>
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { API } from '@/services'
+import { mutation } from '@/store'
 export default {
     name: 'SharePage',
     data () {
@@ -20,12 +22,25 @@ export default {
 
         }
     },
-    created () {
-
+    async created () {
+      await this.render()
+    },
+    computed: {
+      shareImg () {
+        return this.$store.state.shareImg
+      }
     },
     methods: {
         goHome() {
           this.$router.push('/home')
+        },
+        async render() {
+          const studentCode = this.$store.state.student.studentCode
+          const classCode = this.$store.state.currentClass.classCode
+          let response = await API.getSharePageInfo(studentCode, classCode)
+          if (response) {
+            this.$store.commit(mutation.SHAREIMG, response.shareImg? response.shareImg.Content : '')
+          }
         }
     }
 }

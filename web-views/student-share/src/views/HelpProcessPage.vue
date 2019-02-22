@@ -6,22 +6,10 @@
             <div class="content-area">
                 <div>
                     <ul>
-                        <li>
-                            <p>哈佛阅读</p>
-                            <p>《阅读哈佛》一书以作者在哈佛大学的所见所闻为素材，以图文并茂的形式，集学术观察、生活体验、留学经历和热点透视为一体，有对哈佛大学众多名人的访谈，有对哈佛教育理念的思考，有对哈佛文化现象和大学生活的看法，也有作者对申请哈佛大学的建议，等等。</p>
+                        <li v-for="(book,index) in recommendBooks" :key="index">
+                            <p>{{book.bookName}}</p>
+                            <p>{{book.description}}</p>
                         </li>   
-                        <li>
-                            <p>哈佛阅读</p>
-                            <p>《阅读哈佛》一书以作者在哈佛大学的所见所闻为素材，以图文并茂的形式，集学术观察、生活体验、留学经历和热点透视为一体，有对哈佛大学众多名人的访谈，有对哈佛教育理念的思考，有对哈佛文化现象和大学生活的看法，也有作者对申请哈佛大学的建议，等等。</p>
-                        </li>  
-                        <li>
-                            <p>哈佛阅读</p>
-                            <p>《阅读哈佛》一书以作者在哈佛大学的所见所闻为素材，以图文并茂的形式，集学术观察、生活体验、留学经历和热点透视为一体，有对哈佛大学众多名人的访谈，有对哈佛教育理念的思考，有对哈佛文化现象和大学生活的看法，也有作者对申请哈佛大学的建议，等等。</p>
-                        </li>  
-                        <li>
-                            <p>哈佛阅读</p>
-                            <p>《阅读哈佛》一书以作者在哈佛大学的所见所闻为素材，以图文并茂的形式，集学术观察、生活体验、留学经历和热点透视为一体，有对哈佛大学众多名人的访谈，有对哈佛教育理念的思考，有对哈佛文化现象和大学生活的看法，也有作者对申请哈佛大学的建议，等等。</p>
-                        </li>       
                     </ul>
                 </div>
             </div>
@@ -30,6 +18,8 @@
 </template>
 
 <script>
+import { API } from '@/services'
+import { mutation } from '@/store'
 export default {
     name: 'HelpProcessPage',
     data () {
@@ -37,12 +27,38 @@ export default {
 
         }
     },
-    created () {
-
+    async created () {
+        await this.render()
+    },
+    computed: {
+        recommendBooks () {
+            return this.$store.state.recommendBooks
+        }
     },
     methods: {
         goHome () {
             this.$router.push('/home')
+        },
+        async render () {
+            const studentCode = this.$store.state.student.studentCode
+            const classCode = this.$store.state.currentClass.classCode
+            let response = await API.getHelpProcessInfo(studentCode, classCode)
+            if (response && response.recommendBooks) {
+                this.$store.commit(mutation.RECOMMENDBOOKS, this.convertBooks(response.recommendBooks))
+                console.log(this.$store.state)
+            }
+        },
+        convertBooks (books) {
+            let newBooks = []
+            books.forEach(b => {
+                const array = b.Content.split(':')
+                newBooks.push({
+                    bookName: array[0],
+                    description: array[1]
+                })
+            })
+
+            return newBooks
         }
     }
 }

@@ -1,11 +1,7 @@
-import Vue from 'Vue'
-import Vuex from 'Vuex'
+import store from './store'
+import mutation from './common'
 
-Vue.use(Vuex)
-const store = new Vuex.Store({
-    state: {
-
-    }
-})
-
-export default store
+export {
+    store,
+    mutation
+}

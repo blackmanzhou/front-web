@@ -4,7 +4,7 @@
             <p class="title"><span>独特的我</span></p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
-                <span>有礼貌</span>
+                <span>{{ keyword || '暂无介绍' }}</span>
                 <img src="../assets/imgs/keyword.jpg" alt="">
             </div>
         </div>
@@ -12,6 +12,9 @@
 </template>
 
 <script>
+import { API } from '@/services'
+import { mutation } from '@/store'
+
 export default {
     name: 'SelfSpecialPage',
     data () {
@@ -19,12 +22,25 @@ export default {
 
         }
     },
-    created () {
-
+    async created () {
+        await this.render()
+    },
+    computed: {
+        keyword() {
+            return this.$store.state.selfKeyword
+        }
     },
     methods: {
         goHome () {
             this.$router.push('/home')
+        },
+        async render () {
+            const studentCode = this.$store.state.student.studentCode
+            const classCode = this.$store.state.currentClass.classCode
+            let response = await API.getSelfSpecialInfo(studentCode, classCode)
+            if (response && response.keyword) {
+                this.$store.commit(mutation.SELFKEYWORD, response.keyword)
+            }
         }
     }
 }

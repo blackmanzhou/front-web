@@ -28,6 +28,7 @@ export default {
     width: 100%;
     text-align: center;
     font-size: 1.5rem;
+    height: 5%;
     margin-top: .625rem;
 }
 .section-content .title>span {

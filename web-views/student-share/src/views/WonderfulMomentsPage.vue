@@ -5,9 +5,7 @@
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
                  <ul>
-                   <li><img src="../assets/imgs/moment-1.png" alt=""></li>
-                   <li><img src="../assets/imgs/moment-2.png" alt=""></li>
-                   <li><img src="../assets/imgs/moment-3.png" alt=""></li>     
+                   <li v-for="(moment, index) in wonderfulMoments" :key="index"><img :src="moment" alt=""></li>
                  </ul>
             </div>
       </div>
@@ -15,6 +13,8 @@
 </template>
 
 <script>
+import { API } from '@/services'
+import { mutation } from '@/store'
 export default {
     name: 'WonderfulMomentsPage',
     data () {
@@ -22,12 +22,34 @@ export default {
 
         }
     },
-    created () {
-
+    async created () {
+      await this.render()
+    },
+    computed: {
+      wonderfulMoments() {
+        return this.$store.state.wonderfulMoments
+      }
     },
     methods: {
         goHome() {
           this.$router.push('/home')
+        },
+        async render() {
+          const studentCode = this.$store.state.student.studentCode
+          const classCode = this.$store.state.currentClass.classCode
+          let response = await API.getWonderfulMomentsInfo(studentCode, classCode)
+          if (response) {
+            console.log(response)
+            this.$store.commit(mutation.WONDERFULMOMENTS, this.convertWonderfulData(response.wonderfulMoments))
+          }
+        },
+        convertWonderfulData (moments) {
+          let array = []
+          if (moments && moments.length > 0) {
+            const resultString = moments[0].Content
+            array = resultString.split(';')
+          }
+          return array
         }
     }
 }
