@@ -11,7 +11,9 @@ let store = new Vuex.Store({
         recommendBooks: [],
         teacherEvaluation: '',
         wonderfulMoments: [],
-        shareImg: ''
+        shareImg: '',
+        xdfGrade: null,
+        classPerformance: null
     },
     mutations: {
         student(state, data) {
@@ -51,6 +53,14 @@ let store = new Vuex.Store({
         },
         shareImg(state, data) {
             state.shareImg = data
+            console.log(state)
+        },
+        xdfGrade(state, data) {
+            state.xdfGrade = data
+            console.log(state)
+        },
+        classPerformance(state, data) {
+            state.classPerformance = data
             console.log(state)
         }
     }

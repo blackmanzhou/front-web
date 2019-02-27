@@ -31,6 +31,12 @@ export default {
         await this.render()
     },
     computed: {
+        studentCode () {
+            return this.$store.state.student.studentCode
+        },
+        classCode () {
+            return this.$store.state.currentClass.classCode
+        },
         recommendBooks () {
             return this.$store.state.recommendBooks
         }
@@ -40,9 +46,7 @@ export default {
             this.$router.push('/home')
         },
         async render () {
-            const studentCode = this.$store.state.student.studentCode
-            const classCode = this.$store.state.currentClass.classCode
-            let response = await API.getHelpProcessInfo(studentCode, classCode)
+            let response = await API.getHelpProcessInfo(this.studentCode, this.classCode)
             if (response && response.recommendBooks) {
                 this.$store.commit(mutation.RECOMMENDBOOKS, this.convertBooks(response.recommendBooks))
                 console.log(this.$store.state)
@@ -50,13 +54,20 @@ export default {
         },
         convertBooks (books) {
             let newBooks = []
-            books.forEach(b => {
-                const array = b.Content.split(':')
-                newBooks.push({
-                    bookName: array[0],
-                    description: array[1]
+            const bookContent = books[0].Content
+            const objStringArray = bookContent.split(';')
+
+            if (objStringArray && objStringArray.length > 0) {
+                objStringArray.forEach(objStr => {
+                    const items = objStr.split(':')
+                    if (items && items.length > 0) {
+                        newBooks.push({
+                            bookName: items[0],
+                            description: items[1]
+                        })
+                    }
                 })
-            })
+            }
 
             return newBooks
         }

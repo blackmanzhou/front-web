@@ -27,10 +27,8 @@ let API = {
     },
     getExclusiveEnengyInfo: async function(studentCode, classCode) {
         const params = { studentCode, classCode }
-        let classPerformance = await get(URL.getClassPerformance, params)
-        let evaluations = await getClassPerformanceEvaluation(studentCode, classCode)
-        const evaluation = evaluations[0]
-        return { classPerformance, evaluation }
+        const response = await get(URL.getClassPerformance, params)
+        return response
     },
     getSelfSpecialInfo: async function(studentCode, classCode) {
         let keyword = ''
@@ -77,14 +75,6 @@ async function getProcessRecordByType(studentCode, classCode, type) {
     }
 
     return recordList
-}
-
-/**
- * 获取课堂表现
- */
-async function getClassPerformanceEvaluation(studentCode, classCode, type = processRecordType.CLASS_PERFORMANCE_EVALUATION) {
-    let evaluations = await getProcessRecordByType(studentCode, classCode, type)
-    return evaluations || []
 }
 
 /**

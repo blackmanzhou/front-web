@@ -53,7 +53,7 @@ export default {
           window.location.href = 'http://wxpay.xdf.cn/silenceauthorize/view.do?schoolid=23&callid=25&parm=23'
       } else {
           const studentCode = accountInfo.studentcode
-          await this.render('SZS72921')
+          await this.render(studentCode)
       }
     },
     computed: {

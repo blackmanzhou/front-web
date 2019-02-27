@@ -2,15 +2,18 @@ const dev_featchStudentAccount = '/third-party/wechat/commonbindingtwo/operate.d
 const pro_featchStudentAccount = 'http://wxpay.xdf.cn/wechat/commonbindingtwo/operate.do'
 
 const dev_localService = '/web-api'
+const pro_localService = 'http://stsuzhou.xdf.cn/WebApi/StudentProcessShare'
 
+let featchStudentAccount = pro_featchStudentAccount
+let localService = pro_localService
 let URL = {
-    featchStudentAccountInfo: dev_featchStudentAccount,
-    featchStudentProcessRecords: dev_localService,
-    getNewStarShineInfo: `${dev_localService}/GetNormalExamTest`,
-    getClassPerformance: `${dev_localService}/GetClassExamTest`,
-    getProcessWayInfo: `${dev_localService}/GetClassesByStuCode`,
+    featchStudentAccountInfo: featchStudentAccount,
+    featchStudentProcessRecords: localService,
+    getNewStarShineInfo: `${localService}/GetGradePerformance`,
+    getClassPerformance: `${localService}/GetClassPerformance`,
+    getProcessWayInfo: `${localService}/GetClassesByStuCode`,
     getSharePageInfo: '',
-    getStudentBaseInfo: `${dev_localService}/GetStudentBaseInfo`
+    getStudentBaseInfo: `${localService}/GetStudentBaseInfo`
 }
 
 export default URL

@@ -6,12 +6,12 @@
             <div class="content-area">
                 <div>
                     <ul>
-                        <li>随堂诊断：<span>优秀</span></li>
+                        <li>随堂诊断：<span>{{gradeInfo.grade || '暂未公布成绩'}}</span></li>
                     </ul>
                 </div>
                 <div>
-                    <p><span class="student-name">秦宇涵</span>同学：</p>
-                    <p>你每次都非常有礼貌，上课也总是会非常积极得思考问题，甚至会对老师说的提出质疑。我觉得这是一种非常棒的精神，希望你一直保持下去，如果能够坚持思考，那你就会比别人进步一些。我相信你可以做得更好！</p>
+                    <p><span class="student-name">{{studentName || 'X X'}}</span>同学：</p>
+                    <p>{{gradeInfo.evaluation || '老师在紧张准备中。。。'}}</p>
                 </div>
             </div>
         </div>
@@ -19,19 +19,74 @@
 </template>
 
 <script>
+import { API } from '@/services'
+import { mutation } from '@/store'
 export default {
     name: 'NewStarShinePagePage',
     data () {
         return {
-
+            
         }
     },
-    created () {
-
+    async created () {
+        await this.load()
+    },
+    computed: {
+        studentName () {
+            return this.$store.state.student.studentName
+        },
+        studentCode () {
+            return this.$store.state.student.studentCode
+        },
+        classCode () {
+            return this.$store.state.currentClass.classCode
+        },
+        gradeInfo () {
+            return this.$store.state.xdfGrade
+        }   
     },
     methods: {
         goHome () {
             this.$router.push('/home')
+        },
+        async load() {
+            let response = await API.getNewStarShineInfo(this.studentCode, this.classCode)
+            console.log(response)
+            if (response && response.data) {
+                const gradeList = response.data.XDFGradeList
+                if (gradeList && gradeList.length > 0) {
+                     this.$store.commit(mutation.XDFGRADE, this.convertGrade(gradeList[0]))
+                }
+            }
+        },
+        convertGrade(data) {
+            let grade = {
+                score: data.XGScore,
+                fullScore: data.XGFullScore,
+                examType: data.XGExamType,
+                subject: data.XGSubject,
+                evaluation: data.XGDescribe,
+                grade: this.mapGradeByScore(data.XGScore, data.XGFullScore)
+            }
+            
+            return grade
+        },
+        mapGradeByScore(score, fullScore) {
+            let index = 0
+            const scoreRate = score / fullScore
+            const Grades = ['优秀','良好','中等','及格','不及格']
+
+            if (scoreRate < 0.6) {
+                index = 4
+            } else if (scoreRate < 0.7) {
+                index = 3
+            } else if (scoreRate < 0.8) {
+                index = 2
+            } else if (scoreRate < 0.9) {
+                index = 1
+            }
+
+            return Grades[index]
         }
     }
 }

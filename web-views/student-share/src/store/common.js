@@ -6,7 +6,9 @@ let mutationName = {
     RECOMMENDBOOKS: 'recommendBooks',
     TEACHEREVALUATION: 'teacherEvaluation',
     WONDERFULMOMENTS: 'wonderfulMoments',
-    SHAREIMG: 'shareImg'
+    SHAREIMG: 'shareImg',
+    XDFGRADE: 'xdfGrade',
+    CLASSPERFORMANCE: 'classPerformance'
 }
 
 export default mutationName

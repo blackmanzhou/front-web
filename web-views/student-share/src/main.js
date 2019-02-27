@@ -6,11 +6,13 @@ import router from './router'
 import VueTouch from 'vue-touch'
 import { store } from './store'
 
+// 滑动时间
 Vue.use(VueTouch, { name: 'v-touch' })
 Vue.config.productionTip = false
 
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
+
 Vue.http.options.emulateJSON = true
 Vue.http.options.emulateHTTP = true
 Vue.http.options.crossOrigin = true // 跨域访问
