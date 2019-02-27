@@ -9,8 +9,8 @@
             
             <div>
                 <ul>
-                    <li>{{studentCode}}</li>
-                    <li>{{studentName}}</li>
+                    <li>{{studentCode || 'X X X'}}</li>
+                    <li>{{studentName || 'X X X'}}</li>
                 </ul>
             </div>
           </div>
@@ -26,6 +26,7 @@
 <script>
 import { API } from '@/services'
 import { mutation } from '@/store'
+import { resultMsg } from '@/common'
 
 export default {
     name: 'FrontPage',
@@ -37,19 +38,20 @@ export default {
         }
     },
     beforeCreate() {
+       
+    },
+
+    async created() {
        const params = this.$route.query
        if (params) {
            this.openid = params.openid
            this.schoolid = params.schoolid
        }
-
        alert(JSON.stringify(params))
-    },
 
-    async created() {
-      const accountInfo = await this.getStudentAccount()
-  
-      if (!accountInfo) {
+      const accountInfo = await this.getStudentAccount(this.openid)
+
+      if (!this.openid || !accountInfo || !accountInfo.studentcode) {
           window.location.href = 'http://wxpay.xdf.cn/silenceauthorize/view.do?schoolid=23&callid=25&parm=23'
       } else {
           const studentCode = accountInfo.studentcode
@@ -82,12 +84,21 @@ export default {
     },
     methods: {
         goHomePage () {
-          let router = this.$router
-          setTimeout(function() {
-            router.push('/process-way')
-          }, 300)    
+            if (!this.$store.state.student || !this.studentName) {
+                alert(resultMsg.STUDENT_INFO_ERROR)
+                return
+            }
+
+            let router = this.$router
+            setTimeout(function() {
+                router.push('/process-way')
+            }, 300)    
         },
         async render (studentCode) {
+            if (!this.$store.state.student || !this.studentName) {
+                alert(resultMsg.STUDENT_INFO_ERROR)
+                return
+            }
             await this.getClassedByStudentCode(studentCode)
             await this.getStudentBaseInfo(studentCode)
         },

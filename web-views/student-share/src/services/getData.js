@@ -11,6 +11,10 @@ let API = {
     featchStudentAccountInfo: async function(openid = 'oDkS1s2B4MxvUtqOi7k2_099AXHY', schoolid = '1') {
         const params = { openid, schoolid }
         const response = await get(URL.featchStudentAccountInfo, params)
+        console.log('---------------------------')
+        console.log(response)
+        console.log('---------------------------')
+
         return response
     },
 
