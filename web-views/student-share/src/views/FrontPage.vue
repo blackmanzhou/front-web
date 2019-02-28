@@ -9,8 +9,8 @@
             
             <div>
                 <ul>
-                    <li>{{studentCode || 'X X X'}}</li>
-                    <li>{{studentName || 'X X X'}}</li>
+                    <li>{{studentCode || NoDataMsg}}</li>
+                    <li>{{studentName || NoDataMsg}}</li>
                 </ul>
             </div>
           </div>
@@ -32,6 +32,7 @@ export default {
     name: 'FrontPage',
     data() {
         return {
+            NoDataMsg: resultMsg.NO_NAME,
             openid: '',
             schoolid: '',
             pageInfo: null,
@@ -49,7 +50,7 @@ export default {
        }
        alert(JSON.stringify(params))
 
-      const accountInfo = await this.getStudentAccount(this.openid)
+      const accountInfo = await this.getStudentAccount()
 
       if (!this.openid || !accountInfo || !accountInfo.studentcode) {
           window.location.href = 'http://wxpay.xdf.cn/silenceauthorize/view.do?schoolid=23&callid=25&parm=23'
@@ -95,16 +96,18 @@ export default {
             }, 300)    
         },
         async render (studentCode) {
+            await this.getClassedByStudentCode(studentCode)
+            await this.getStudentBaseInfo(studentCode)
+
             if (!this.$store.state.student || !this.studentName) {
                 alert(resultMsg.STUDENT_INFO_ERROR)
                 return
             }
-            await this.getClassedByStudentCode(studentCode)
-            await this.getStudentBaseInfo(studentCode)
+            console.log(1111111)
         },
 
         async getStudentAccount () {
-            let response = await API.featchStudentAccountInfo()
+            let response = await API.featchStudentAccountInfo(this.openid, this.schoolid)
             return response.data
         },
 

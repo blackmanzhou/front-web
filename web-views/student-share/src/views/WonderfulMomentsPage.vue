@@ -4,9 +4,10 @@
             <p class="title"><span>精彩瞬间</span></p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
-                 <ul>
+                 <ul v-if="wonderfulMoments && wonderfulMoments.length > 0">
                    <li v-for="(moment, index) in wonderfulMoments" :key="index"><img :src="moment" alt=""></li>
                  </ul>
+                 <span v-else>{{NoDataMsg}}</span>
             </div>
       </div>
     </div>
@@ -15,11 +16,13 @@
 <script>
 import { API } from '@/services'
 import { mutation } from '@/store'
+import { resultMsg } from '@/common'
+
 export default {
     name: 'WonderfulMomentsPage',
     data () {
         return {
-
+          NoDataMsg: resultMsg.WAITING_FOR_TEACHER
         }
     },
     async created () {

@@ -4,9 +4,10 @@
             <p class="title"><span>分享</span></p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
-              <ul>
-                <li><img :src="shareImg" alt=""></li>
+              <ul v-if="shareImg">
+                <li><img :src="shareImg" alt="老师紧张准备中。。。"></li>
               </ul>
+              <span v-else>{{NoDataMsg}}</span>
             </div>
       </div>
     </div>
@@ -15,11 +16,13 @@
 <script>
 import { API } from '@/services'
 import { mutation } from '@/store'
+import { resultMsg } from '@/common'
+
 export default {
     name: 'SharePage',
     data () {
         return {
-
+          NoDataMsg: resultMsg.WAITING_FOR_TEACHER
         }
     },
     async created () {

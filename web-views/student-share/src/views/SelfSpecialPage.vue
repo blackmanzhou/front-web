@@ -4,7 +4,7 @@
             <p class="title"><span>独特的我</span></p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
-                <span>{{ keyword || '暂无介绍' }}</span>
+                <span>{{ keyword || '暂无' }}</span>
                 <img src="../assets/imgs/keyword.jpg" alt="">
             </div>
         </div>

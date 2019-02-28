@@ -13,9 +13,9 @@
                    {{classObj.className}}
                  </p>
             </div>
-            <p class="btn-goHome">
+            <!-- <p class="btn-goHome">
               <button @click="goHome()">开始</button>
-            </p>
+            </p> -->
       </div>
     </div>
 </template>

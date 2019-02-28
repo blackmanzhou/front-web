@@ -11,7 +11,7 @@
                 </div>
                 <div>
                     <p><span class="student-name">{{studentName || 'X X'}}</span>同学：</p>
-                    <p>{{gradeInfo.evaluation || '老师在紧张准备中。。。'}}</p>
+                    <p>{{gradeInfo.evaluation || NoDataMsg}}</p>
                 </div>
             </div>
         </div>
@@ -21,11 +21,13 @@
 <script>
 import { API } from '@/services'
 import { mutation } from '@/store'
+import { resultMsg } from '@/common'
+
 export default {
     name: 'NewStarShinePagePage',
     data () {
         return {
-            
+            NoDataMsg: resultMsg.WAITING_FOR_TEACHER
         }
     },
     async created () {

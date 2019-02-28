@@ -5,12 +5,13 @@
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
                 <div>
-                    <ul>
+                    <ul v-if="recommendBooks && recommendBooks.length > 0">
                         <li v-for="(book,index) in recommendBooks" :key="index">
                             <p>{{book.bookName}}</p>
                             <p>{{book.description}}</p>
                         </li>   
                     </ul>
+                    <span v-else>{{NoDataMsg}}</span>
                 </div>
             </div>
         </div>
@@ -20,11 +21,13 @@
 <script>
 import { API } from '@/services'
 import { mutation } from '@/store'
+import { resultMsg } from '@/common'
+
 export default {
     name: 'HelpProcessPage',
     data () {
         return {
-
+            NoDataMsg: resultMsg.WAITING_FOR_TEACHER
         }
     },
     async created () {
@@ -54,19 +57,21 @@ export default {
         },
         convertBooks (books) {
             let newBooks = []
-            const bookContent = books[0].Content
-            const objStringArray = bookContent.split(';')
+            if (books && books.length > 0) {
+                const bookContent = books[0].Content
+                const objStringArray = bookContent.split(';')
 
-            if (objStringArray && objStringArray.length > 0) {
-                objStringArray.forEach(objStr => {
-                    const items = objStr.split(':')
-                    if (items && items.length > 0) {
-                        newBooks.push({
-                            bookName: items[0],
-                            description: items[1]
-                        })
-                    }
-                })
+                if (objStringArray && objStringArray.length > 0) {
+                    objStringArray.forEach(objStr => {
+                        const items = objStr.split(':')
+                        if (items && items.length > 0) {
+                            newBooks.push({
+                                bookName: items[0],
+                                description: items[1]
+                            })
+                        }
+                    })
+                }
             }
 
             return newBooks

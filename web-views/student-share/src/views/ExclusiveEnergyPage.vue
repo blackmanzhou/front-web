@@ -10,32 +10,47 @@
                             <span  v-if="classPerformance && classPerformance.discipline">
                                 <label v-for="num in classPerformance.discipline" :key="num">&#9733;</label>      
                             </span>
+                            <span  v-else>
+                                <label v-for="num in 5" :key="num">&#9733;</label>      
+                            </span>
                         </li>
                         <li>理解能力：
                             <span  v-if="classPerformance && classPerformance.comprehension">
                                 <label v-for="num in classPerformance.comprehension" :key="num">&#9733;</label>      
-                            </span>    
+                            </span>
+                            <span  v-else>
+                                <label v-for="num in 5" :key="num">&#9733;</label>      
+                            </span>
                         </li>		  
                         <li>运用能力：
                             <span  v-if="classPerformance && classPerformance.application">
                                 <label v-for="num in classPerformance.application" :key="num">&#9733;</label>      
                             </span>
+                            <span  v-else>
+                                <label v-for="num in 5" :key="num">&#9733;</label>      
+                            </span>
                         </li>
                         <li>积 极  性  ：
                             <span  v-if="classPerformance && classPerformance.positivity">
                                 <label v-for="num in classPerformance.positivity" :key="num">&#9733;</label>      
-                            </span>    
+                            </span>
+                            <span  v-else>
+                                <label v-for="num in 5" :key="num">&#9733;</label>      
+                            </span>
                         </li>				  
                         <li>注 意  力  ：
                             <span  v-if="classPerformance && classPerformance.attention">
                                 <label v-for="num in classPerformance.attention" :key="num">&#9733;</label>      
+                            </span>
+                            <span  v-else>
+                                <label v-for="num in 5" :key="num">&#9733;</label>      
                             </span>
                         </li>
                     </ul>
                 </div>
                 <div>
                     <p><span class="student-name">{{studentName || 'X X'}}</span>同学：</p>
-                    <p>{{classPerformance.evaluation || '老师正在紧张准备中。。。'}}</p>
+                    <p>{{classPerformance.evaluation || NoDataMsg}}</p>
                 </div>
             </div>
         </div>
@@ -45,11 +60,12 @@
 <script>
 import { API } from '@/services'
 import { mutation } from '@/store'
+import { resultMsg } from '@/common'
 export default {
     name: 'ExclusiveEnergyPage',
     data () {
         return {
-
+            NoDataMsg: resultMsg.WAITING_FOR_TEACHER
         }
     },
     async created () {
@@ -129,6 +145,10 @@ export default {
     font-size: 1.6rem;
     color: #FFEB66;
     padding-left: .625rem
+}
+
+#ExclusiveEnergy-Page .content-area>div>ul>li>span:last-child>label {
+    color: #dbdbdb
 }
 </style>
 

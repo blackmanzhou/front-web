@@ -6,49 +6,63 @@ let store = new Vuex.Store({
     state: {
         student: {},
         classList: [], //学生所有的班级
-        currentClass: null,
+        currentClass: {},
         selfKeyword: '',
         recommendBooks: [],
         teacherEvaluation: '',
         wonderfulMoments: [],
         shareImg: '',
-        xdfGrade: null,
-        classPerformance: null
+        xdfGrade: {},
+        classPerformance: {}
     },
     mutations: {
         student(state, data) {
-            state.student = {
-                studentName: data.SBIStuName,
-                studentCode: data.SBIStuCode
+            if (data) {
+                state.student = {
+                    studentName: data.SBIStuName,
+                    studentCode: data.SBIStuCode
+                }
             }
         },
         classList(state, classes) {
-            let newClassArray = []
-            classes.forEach(item => {
-                newClassArray.push({
-                    classCode: item.CIClassCode,
-                    className: item.CIClassName
+            if (classes) {
+                let newClassArray = []
+                classes.forEach(item => {
+                    newClassArray.push({
+                        classCode: item.CIClassCode,
+                        className: item.CIClassName
+                    })
                 })
-            })
 
-            state.classList = newClassArray
-            state.currentClass = newClassArray[0]
+                state.classList = newClassArray
+                if (newClassArray[0]) {
+                    state.currentClass = newClassArray[0]
+                }
+            }
         },
         currentClass(state, classObj) {
-            state.currentClass = classObj
+            if (classObj) {
+                state.currentClass = classObj
+            }
         },
         selfKeyword(state, keyword) {
             state.selfKeyword = keyword
         },
         recommendBooks(state, books) {
-            state.recommendBooks = books
+            if(books) {
+                state.recommendBooks = books
+            }
         },
         teacherEvaluation(state, data) {
-            state.teacherEvaluation = data.Content
-            console.log(state)
+            if (data) {
+                state.teacherEvaluation = data.Content
+                console.log(state)
+            }
         },
         wonderfulMoments(state, data) {
-            state.wonderfulMoments = data
+            if (data) {
+                state.wonderfulMoments = data
+            }
             console.log(state)
         },
         shareImg(state, data) {
@@ -56,11 +70,15 @@ let store = new Vuex.Store({
             console.log(state)
         },
         xdfGrade(state, data) {
-            state.xdfGrade = data
+            if (data) {
+                state.xdfGrade = data
+            }
             console.log(state)
         },
         classPerformance(state, data) {
-            state.classPerformance = data
+            if (data) {
+                state.classPerformance = data
+            }
             console.log(state)
         }
     }

@@ -5,7 +5,7 @@
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
                  <p><span class="student-name">{{studentName || 'X X'}}</span>同学</p>
-                 <p>{{teacherEvaluation || '别着急，老师还没来得及夸你那！！！！'}}</p>
+                 <p>{{teacherEvaluation || '别着急，老师还没来得及夸你呐！！！！'}}</p>
             </div>
         </div>
     </div>

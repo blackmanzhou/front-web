@@ -2,7 +2,7 @@
 // const pro_featchStudentAccount = 'http://wxpay.xdf.cn/wechat/commonbindingtwo/operate.do'
 
 const dev_localService = '/web-api'
-const pro_localService = 'http://stsuzhou.xdf.cn/WebApi/StudentProcessShare'
+const pro_localService = 'http://localhost:59447/WebApi/StudentProcessShare'
 
 // let featchStudentAccount = pro_featchStudentAccount
 let localService = pro_localService
