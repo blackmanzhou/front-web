@@ -2,6 +2,7 @@
     <div id="HelpProcess-Page">
         <div class="section-content"  :class="!recommendBooks || recommendBooks.length == 0? 'NO-data' : ''">
             <p class="title"><span>助力成长</span></p>
+            <p class="class-name">{{className}}</p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
                 <div>
@@ -39,6 +40,9 @@ export default {
         },
         classCode () {
             return this.$store.state.currentClass.classCode
+        },
+        className () {
+            return this.$store.state.currentClass.className
         },
         recommendBooks () {
             return this.$store.state.recommendBooks

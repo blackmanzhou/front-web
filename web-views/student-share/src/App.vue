@@ -31,6 +31,12 @@ export default {
     height: 5%;
     margin-top: .625rem;
 }
+.section-content .class-name {
+  text-align: center;
+  font-size: 0.625rem;
+  color: #4E95FF;
+}
+
 .section-content .title>span {
     display: inline-block;
     border-bottom: 8px solid #DAE9F9;

@@ -2,6 +2,7 @@
     <div id="NewStarShine-Page">
         <div class="section-content">
             <p class="title"><span>新光闪耀</span></p>
+            <p class="class-name">{{className}}</p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
                 <div>
@@ -42,6 +43,9 @@ export default {
         },
         classCode () {
             return this.$store.state.currentClass.classCode
+        },
+        className () {
+            return this.$store.state.currentClass.className
         },
         gradeInfo () {
             return this.$store.state.xdfGrade

@@ -2,6 +2,7 @@
     <div id="WonderfulMoments-Page">
       <div class="section-content" :class="!wonderfulMoments || wonderfulMoments.length == 0? 'NO-data' : ''">
             <p class="title"><span>精彩瞬间</span></p>
+            <p class="class-name">{{className}}</p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
                  <ul v-if="wonderfulMoments && wonderfulMoments.length > 0">
@@ -31,7 +32,10 @@ export default {
     computed: {
       wonderfulMoments() {
         return this.$store.state.wonderfulMoments
-      }
+      },
+      className () {
+          return this.$store.state.currentClass.className
+      },
     },
     methods: {
         goHome() {

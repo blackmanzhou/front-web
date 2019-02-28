@@ -2,6 +2,7 @@
     <div id="ExclusiveEnergy-Page">
          <div class="section-content">
             <p class="title"><span>专属能量</span></p>
+            <p class="class-name">{{className}}</p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
                 <div>
@@ -81,6 +82,9 @@ export default {
         classCode () {
             return this.$store.state.currentClass.classCode
         },
+        className () {
+            return this.$store.state.currentClass.className
+        },
         classPerformance () {
             return this.$store.state.classPerformance
         }
@@ -140,11 +144,16 @@ export default {
     font-size: 1.25rem;
     padding-right: .625rem; 
 }
+#ExclusiveEnergy-Page .content-area>div>ul>li {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
 
 #ExclusiveEnergy-Page .content-area>div>ul>li>span>label {
     font-size: 1.6rem;
     color: #FFEB66;
-    padding-left: .625rem
+    padding-left: .25rem
 }
 
 #ExclusiveEnergy-Page .content-area>div>ul>li>span:last-child>label {

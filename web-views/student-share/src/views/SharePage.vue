@@ -2,6 +2,7 @@
     <div id="Share-Page">
        <div class="section-content" :class="!shareImg? 'NO-data' : ''">
             <p class="title"><span>分享</span></p>
+            <p class="class-name">{{className}}</p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
               <ul v-if="shareImg">
@@ -31,7 +32,10 @@ export default {
     computed: {
       shareImg () {
         return this.$store.state.shareImg
-      }
+      },
+      className () {
+          return this.$store.state.currentClass.className
+      },
     },
     methods: {
         goHome() {

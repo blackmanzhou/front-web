@@ -2,6 +2,7 @@
     <div id="TeacherMessage-Page">
         <div class="section-content">
             <p class="title"><span>老师寄语</span></p>
+            <p class="class-name">{{className}}</p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
                  <p><span class="student-name">{{studentName || 'X X'}}</span>同学</p>
@@ -30,7 +31,10 @@ export default {
         },
         teacherEvaluation() {
             return this.$store.state.teacherEvaluation
-        }
+        },
+        className () {
+            return this.$store.state.currentClass.className
+        },
     },
     methods: {
         goHome () {

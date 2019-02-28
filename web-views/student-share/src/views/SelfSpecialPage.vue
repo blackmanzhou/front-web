@@ -2,6 +2,7 @@
     <div id="SelfSpecial-Page">
         <div class="section-content">
             <p class="title"><span>独特的我</span></p>
+            <p class="class-name">{{className}}</p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
                 <span>{{ keyword || '暂无' }}</span>
@@ -28,7 +29,10 @@ export default {
     computed: {
         keyword() {
             return this.$store.state.selfKeyword
-        }
+        },
+        className () {
+            return this.$store.state.currentClass.className
+        },
     },
     methods: {
         goHome () {
