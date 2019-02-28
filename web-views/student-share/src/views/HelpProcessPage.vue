@@ -1,6 +1,6 @@
 <template>
     <div id="HelpProcess-Page">
-        <div class="section-content">
+        <div class="section-content"  :class="!recommendBooks || recommendBooks.length == 0? 'NO-data' : ''">
             <p class="title"><span>助力成长</span></p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">

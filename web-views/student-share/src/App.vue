@@ -55,4 +55,11 @@ export default {
     padding: 1.625rem;
     font-size: 0.95rem;
 }
+
+.NO-data {
+  background-image: url('./assets/imgs/waiting.gif');
+  background-size: 150%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div id="Share-Page">
-       <div class="section-content">
+       <div class="section-content" :class="!shareImg? 'NO-data' : ''">
             <p class="title"><span>分享</span></p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">

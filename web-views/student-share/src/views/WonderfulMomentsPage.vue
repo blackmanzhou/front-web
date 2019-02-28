@@ -1,6 +1,6 @@
 <template>
     <div id="WonderfulMoments-Page">
-      <div class="section-content">
+      <div class="section-content" :class="!wonderfulMoments || wonderfulMoments.length == 0? 'NO-data' : ''">
             <p class="title"><span>精彩瞬间</span></p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
             <div class="content-area">
