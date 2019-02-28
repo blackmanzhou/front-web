@@ -10,24 +10,24 @@ let API = {
     // 请求集团微服务.
     featchStudentAccountInfo: async function(openid = 'oDkS1s2B4MxvUtqOi7k2_099AXHY', schoolid = '1') {
         const params = { openid, schoolid }
-        // const response = await get(URL.featchStudentAccountInfo, params)
-        const response = {
-            resultCode: 0,
-            data: { bindingid: 'F9E26DC9-DCFE-462C-B68A-986007DB9D15',
-            schoolid: '23',
-            studentname: '尹丹婷',
-            studentmoblie: '18963657923',
-            studentcode: 'SZS20810',
-            bindingdate: 1530335996000,
-            openid: 'oxdxlt3lMS0qldGvwY6X7aptAmLc',
-            pic:
-             'http://i.xdf.cn/card/QrImages/school_23_studentcode_SZS20810.png',
-            unionid: '',
-            isdefault: 1 }
-        }
-        console.log('---------------------------')
-        console.log(response)
-        console.log('---------------------------')
+        const response = await get(URL.featchStudentAccountInfo, params)
+        // const response = {
+        //     resultCode: 0,
+        //     data: { bindingid: 'F9E26DC9-DCFE-462C-B68A-986007DB9D15',
+        //     schoolid: '23',
+        //     studentname: '尹丹婷',
+        //     studentmoblie: '18963657923',
+        //     studentcode: 'SZS20810',
+        //     bindingdate: 1530335996000,
+        //     openid: 'oxdxlt3lMS0qldGvwY6X7aptAmLc',
+        //     pic:
+        //      'http://i.xdf.cn/card/QrImages/school_23_studentcode_SZS20810.png',
+        //     unionid: '',
+        //     isdefault: 1 }
+        // }
+        // console.log('---------------------------')
+        // console.log(response)
+        // console.log('---------------------------')
 
         return response
     },
