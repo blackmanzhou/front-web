@@ -4,12 +4,8 @@
             <p class="title"><span>分享</span></p>
             <p class="class-name">{{className}}</p>
             <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
-            <div class="content-area">
-              <ul v-if="shareImg">
-                <li><img :src="shareImg" alt="老师紧张准备中。。。"></li>
-              </ul>
-              <span v-else>{{NoDataMsg}}</span>
-            </div>
+            <img class="shareImg-snapshot" v-if="shareImg" :src="shareImg" alt="老师紧张准备中。。。"/>
+            <span v-else>{{NoDataMsg}}</span>
       </div>
     </div>
 </template>
@@ -70,8 +66,11 @@ export default {
   justify-content: center
 }
 
-#Share-Page .section-content .content-area>ul>li>img {
-  width: 90%;
+.shareImg-snapshot {
+  width: 100%;
+  height: 88%;
+  margin-top: 3%;
+  overflow: auto;
 }
 </style>
 

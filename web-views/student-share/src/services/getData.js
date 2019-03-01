@@ -61,8 +61,12 @@ let API = {
        return { recommendBooks }
     },
     getTeacherMessageInfo: async function(studentCode, classCode) {
-        let teacherEvaluations = await getTeacherEvaluation(studentCode, classCode)
-        return { evaluation: teacherEvaluations[0] }
+        let evaluation = ''
+        const teacherEvaluations = await getTeacherEvaluation(studentCode, classCode)
+        if (teacherEvaluations && teacherEvaluations.length > 0) {
+            evaluation = teacherEvaluations[0].Content
+        }
+        return { evaluation }
     },
     getWonderfulMomentsInfo: async function(studentCode, classCode) {
         let wonderfulMoments = await getWonderfulMoments(studentCode, classCode)

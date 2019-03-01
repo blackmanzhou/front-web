@@ -48,7 +48,6 @@ export default {
            this.openid = params.openid
            this.schoolid = params.schoolid
        }
-       alert(JSON.stringify(params))
 
       const accountInfo = await this.getStudentAccount()
 

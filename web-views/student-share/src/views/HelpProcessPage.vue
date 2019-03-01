@@ -102,6 +102,8 @@ export default {
 #HelpProcess-Page .content-area>div>ul>li>p:last-child {
     text-indent: 2rem;
     font-size: .95rem;
+    /* 自动换行 */
+    word-wrap: break-word; 
 }
 </style>
 

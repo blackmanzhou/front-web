@@ -42,7 +42,7 @@ export default {
             const studentCode = this.$store.state.student.studentCode
             const classCode = this.$store.state.currentClass.classCode
             let response = await API.getSelfSpecialInfo(studentCode, classCode)
-            if (response && response.keyword) {
+            if (response) {
                 this.$store.commit(mutation.SELFKEYWORD, response.keyword)
             }
         }

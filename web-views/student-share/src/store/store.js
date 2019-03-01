@@ -53,11 +53,9 @@ let store = new Vuex.Store({
                 state.recommendBooks = books
             }
         },
-        teacherEvaluation(state, data) {
-            if (data) {
-                state.teacherEvaluation = data.Content
-                console.log(state)
-            }
+        teacherEvaluation(state, evaluation) {
+            state.teacherEvaluation = evaluation
+            console.log(state)
         },
         wonderfulMoments(state, data) {
             if (data) {

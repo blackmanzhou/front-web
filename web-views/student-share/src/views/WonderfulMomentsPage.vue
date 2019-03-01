@@ -53,8 +53,11 @@ export default {
         convertWonderfulData (moments) {
           let array = []
           if (moments && moments.length > 0) {
-            const resultString = moments[0].Content
-            array = resultString.split(';')
+            let resultString = moments[0].Content
+            if (resultString.lastIndexOf(';') > 0) {
+               resultString = resultString.substring(0, resultString.lastIndexOf(';'))
+               array = resultString.split(';')
+            }
           }
           return array
         }
