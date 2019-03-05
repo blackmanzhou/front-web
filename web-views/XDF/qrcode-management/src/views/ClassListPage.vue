@@ -7,7 +7,7 @@
             <img src="../assets/images/icon-school.png" alt="">
         </div>
         <ul v-for="item in classList" :key="item.id">
-            <li><class-item :classInfo="item"></class-item></li>
+            <li @click="goDetail(item.id)"><class-item :classInfo="item"></class-item></li>
         </ul>
     </div>
 </template>
@@ -45,6 +45,11 @@ export default {
                 }
             ]
         }
+    },
+    methods: {
+        goDetail(classId) {
+            this.$router.push(`/class-list/${classId}`)
+        }
     }
 }
 </script>
@@ -58,7 +63,7 @@ export default {
 }
 
 #classlist-page .page-top>div:first-child {
-    background: url('../assets/images/icon-flag.png')
+    background: url('../assets/images/icon-tag.png')
 }
 
 #classlist-page .page-top {
