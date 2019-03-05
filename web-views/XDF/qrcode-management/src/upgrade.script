@@ -1,0 +1,47 @@
+USE NFineBase
+
+/****** T_ClassInfo 添加两个字段  ******/
+GO
+BEGIN
+	ALTER TABLE T_ClassInfo
+	ADD TEST1 image,
+		TEST2 image
+END
+
+/****** Sys_Module 新增一条记录  ******/
+GO
+BEGIN
+INSERT INTO Sys_Module
+  (F_Id, 
+   F_ParentId,
+   F_FullName,
+   F_UrlAddress,
+   F_Target,
+   F_IsMenu,
+   F_IsExpand,
+   F_IsPublic,
+   F_AllowEdit,
+   F_AllowDelete,
+   F_SortCode,
+   F_EnabledMark,
+   F_Description,
+   F_CreatorTime,
+   F_CreatorUserId)
+   VALUES(
+   NEWID(),
+   'a73efe0b-1a9f-42f2-ad6c-0a7abac3430d',
+   '二维码管理',
+   '/StuInfoManagement/QRCode/Index',
+   'iframe',
+   1,
+   0,
+   0,
+   0,
+   0,
+   6,
+   1,
+   '老师上传班级以及个人的二维码。',
+   GETDATE(),
+   '9f2ec079-7d0f-4fe2-90ab-8b09a8302aba'
+   )
+END
