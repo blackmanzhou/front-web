@@ -6,9 +6,10 @@ import LoginPage from '@/views/LoginPage'
 import HomePage from '@/views/HomePage'
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
-      path: '/login',
+      path: '/',
       name: 'LoginPage',
       component: LoginPage
     },
