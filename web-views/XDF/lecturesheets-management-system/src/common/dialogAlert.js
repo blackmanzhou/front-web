@@ -1,3 +1,5 @@
+import { resultCode } from '@/common'
+
 let dialogAlert = function (Vue, options) {
     Vue.prototype.showError = function (errorMsg) {
       this.$confirm(errorMsg, '错误', {
@@ -22,7 +24,7 @@ let dialogAlert = function (Vue, options) {
         center: true
       }).then()
     },
-    Vue.prototype.success = function (msg) {
+    Vue.prototype.showSuccess = function (msg) {
       this.$confirm(msg, '成功', {
         confirmButtonText: '确定',
         callback: action => {
@@ -33,22 +35,23 @@ let dialogAlert = function (Vue, options) {
         center: true
       }).then()
     },
-    Vue.prototype.showSuccess = function (msg, operationName) {
+    Vue.prototype.showMessage = function (msg, typeIndex) {
       const message = msg  || '操作成功！'
       let type = 'success'
-      switch (operationName) {
-        case 'add':
+      switch (typeIndex) {
+        case resultCode.SUCCESS:
           break
-        case 'delete':
+        case resultCode.WARNING:
           type = 'error'
           break
-        case 'update':
+        case resultCode.EROR:
           type = 'warning'
           break
         default: 
           break
       }
       this.$message({
+        showClose: true,
         message: message,
         type: type
       })

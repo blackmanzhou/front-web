@@ -2,9 +2,9 @@
   <div id="login-page">
     <div id="login-form">
       <h1>讲义管理系统</h1>
-      <el-form :rules="loginRules" :model="loginInfo" ref="loginForm" label-width="70px">
+      <el-form :rules="loginRules" :model="loginInfo" ref="loginForm" label-width="4.375rem" @keyup.enter.native="login('loginForm')">
         <el-form-item label="用户名" prop="userName">
-          <el-input v-model="loginInfo.userName" type="text" placeholder="手机号"></el-input>
+          <el-input v-model="loginInfo.userName" type="text" placeholder="用户名" autofocus></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input v-model="loginInfo.password" type="password" placeholder="密码"></el-input>
@@ -13,7 +13,8 @@
           <el-button type="primary" @click="login('loginForm')">登录</el-button>
         </el-form-item>
       </el-form>
-      <p>忘记密码？</p>
+      <p @click="changePassword()">忘记密码？</p>
+      <!-- <i class="fa fa-question-circle-o"></i> -->
     </div>
   </div>
 </template>
@@ -52,6 +53,9 @@ export default {
       }
     };
   },
+  created() {
+
+  },
   methods: {
     async validate(formName) {
       let isRight = false;
@@ -68,13 +72,17 @@ export default {
       const valid = await this.validate(loginForm);
       if (valid) {
         const response = await API.login(this.loginInfo)
-        
+
         if (response.resultCode == 0) {
-          alert('login success')
+          this.$router.push('/home')
         } else {
           this.showError('用户名或密码错误！')
         }
       }
+    },
+
+    changePassword () {
+      this.$router.push('/login/change-password')
     }
   }
 };
@@ -121,11 +129,15 @@ export default {
   margin-top: 3.125rem /* 50/16 */
 }
 
-#login-form > p {
+#login-form>p {
   text-align: right;
   font-size: small;
   color: burlywood;
   cursor: pointer;
+}
+
+#login-form>p:hover {
+  color: #E4A02B
 }
 </style>
 
