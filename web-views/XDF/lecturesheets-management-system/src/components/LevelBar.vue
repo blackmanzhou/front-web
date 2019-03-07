@@ -39,6 +39,12 @@ export default {
     display: flex;
     align-items: center
 }
+
+#level-bar .el-breadcrumb {
+  font-size: 1rem;
+  height: 1.3125rem; /* 21/16 */
+  line-height: 1.3125rem /* 21/16 */
+}
 </style>
 
 

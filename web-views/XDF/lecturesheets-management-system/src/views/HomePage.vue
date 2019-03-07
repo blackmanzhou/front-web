@@ -1,30 +1,41 @@
 <template>
   <div id="home-page">
-    <side-bar></side-bar>
-    <div class="right-container">
-      <nav-bar></nav-bar>
-      <level-bar></level-bar>
-      <div class="content-container">
-
+    <div class="home-page-container">
+      <div class="flat-items">
+        <flat-menu-item v-for="(item, index) in flatMenuItemList" :key="index" :flatContent="item"></flat-menu-item>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import NavBar from '@/components/NavBar'
-import SideBar from '@/components/SideBar'
-import LevelBar from '@/components/LevelBar'
+import FlatMenuItem from "@/components/icon-group/FlatMenuItem";
 
 export default {
   name: "HomePage",
   components: {
-    NavBar,
-    SideBar,
-    LevelBar
+    FlatMenuItem
   },
   data() {
-    return {};
+    return {
+      flatMenuItemList: [
+        {
+          title: "消息",
+          number: 521,
+          iconClass: "fa fa-commenting color-commenting"
+        },
+        {
+          title: "开销",
+          number: 521,
+          iconClass: "fa fa-rmb color-rmb"
+        },
+        {
+          title: "库存",
+          number: 521,
+          iconClass: "fa fa-shopping-cart color-shopping-cart"
+        }
+      ]
+    };
   }
 };
 </script>
@@ -33,38 +44,24 @@ export default {
 #home-page {
   height: 100%;
   width: 100%;
+}
+
+.home-page-container {
+  padding: 2.5rem 1.25rem;
+}
+
+.home-page-container .flat-items {
   display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
-#home-page #side-bar {
-  width: 10%;
-  height: 100%
+.home-page-container .flat-items #flat-menu-item {
+  font-size: 1rem /* 40/16 */;
+  width: 20%;
+  height: 7rem;
+  cursor: pointer;
 }
-
-#home-page .right-container {
-  width: 90%;
-  /* padding: 0 1rem; */
-  background-color: #ffffff;
-}
-
-#home-page #nav-bar {
-  width: 98%;
-  height: 8%;
-  margin: 0 auto;
-}
-
-#home-page #level-bar {
-  width: 98%;
-  height: 7%;
-  margin: 0 auto;
-}
-
-#home-page .content-container {
-  height: 85%;
-  width: 100%;
-  background-color: #F6F6F6;
-}
-
 </style>
 
 

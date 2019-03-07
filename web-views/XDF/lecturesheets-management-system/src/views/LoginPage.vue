@@ -1,30 +1,38 @@
 <template>
   <div id="login-page">
+    <header-bar :hasBottomLine="hasBottomLine"></header-bar>
     <div id="login-form">
-      <h1>讲义管理系统</h1>
-      <el-form :rules="loginRules" :model="loginInfo" ref="loginForm" label-width="4.375rem" @keyup.enter.native="login('loginForm')">
-        <el-form-item label="用户名" prop="userName">
+      <h1>登  录</h1>
+      <el-form :rules="loginRules" :model="loginInfo" ref="loginForm" @keyup.enter.native="login('loginForm')">
+        <el-form-item prop="userName">
           <el-input v-model="loginInfo.userName" type="text" placeholder="用户名" autofocus></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password">
+        <el-form-item prop="password">
           <el-input v-model="loginInfo.password" type="password" placeholder="密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="login('loginForm')">登录</el-button>
+          <el-button type="primary" @click="login('loginForm')" round>登录</el-button>
         </el-form-item>
       </el-form>
       <p @click="changePassword()">忘记密码？</p>
       <!-- <i class="fa fa-question-circle-o"></i> -->
     </div>
+    <footer-bar></footer-bar>
   </div>
 </template>
 
 <script>
 import { API } from '@/services'
 import { mutation } from '@/store'
+import HeaderBar from '@/components/Header'
+import FooterBar from '@/components/Footer'
 
 export default {
   name: "LoginPage",
+  components: {
+    HeaderBar,
+    FooterBar
+  },
   data() {
     // 校验规则
     var validateName = (rule, value, callback) => {
@@ -43,6 +51,7 @@ export default {
       };
 
     return {
+      hasBottomLine: true,
       loginInfo: {
         userName: "",
         password: ""
@@ -53,9 +62,7 @@ export default {
       }
     };
   },
-  created() {
-
-  },
+  
   methods: {
     async validate(formName) {
       let isRight = false;
@@ -102,24 +109,40 @@ export default {
   width: 45%;
 }
 
+h1 {
+  color: #7e8ca3;
+}
+
 #login-page {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
   width: 100%;
-  background: url("../assets/images/bg-login.png");
+  background: url("../assets/images/bg.jpg");
   background-position: center center;
   background-repeat: repeat;
   overflow-y: hidden;
   background-color: rgb(245, 245, 245);
 }
 
+#login-page #header {
+  height: 10%;
+  color: #fff;
+  font-size: 2rem;
+}
+
+#login-page #footer {
+  color: #cccccc;
+  font-size: smaller
+}
+
 #login-form {
   height: 21.875rem /* 350/16 */;
-  width: 31.25rem /* 500/16 */;
+  width: 25rem;
   background: #ffffff;
-  border-radius: 0.9375rem /* 15/16 */;
+  border-radius: .5rem /* 8/16 */;
   text-align: center;
   padding: 1.25rem;
 }

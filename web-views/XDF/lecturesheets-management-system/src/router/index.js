@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
+import IndexPage from '@/views/IndexPage'
 import LoginPage from '@/views/LoginPage'
 import HomePage from '@/views/HomePage'
 import ChangePwdPage from '@/views/ChangePasswordPage'
@@ -9,7 +10,8 @@ import ChangePwdPage from '@/views/ChangePasswordPage'
 export default new Router({
   mode: 'history',
   base: '/lecturesheets-managerment-system',
-  routes: [{
+  routes: [
+    {
       path: '/login',
       name: '登录',
       component: LoginPage
@@ -20,9 +22,17 @@ export default new Router({
       component: ChangePwdPage
     },
     {
-      path: '/home',
-      name: '主页',
-      component: HomePage
+      path: '/',
+      name: '',
+      component: IndexPage,
+      redirect: '/home',
+      children: [
+        {
+          path: 'home',
+          name: '主页',
+          component: HomePage
+        }
+      ]
     }
   ]
 })
