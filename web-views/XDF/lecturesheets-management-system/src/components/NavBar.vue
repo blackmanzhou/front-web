@@ -1,6 +1,7 @@
 <template>
   <div id="nav-bar">
     <div>今天 {{ currentDateTime.month }} 月{{ currentDateTime.day }} 日 {{ weekList[currentDateTime.Day] }} {{ currentDateTime.hour }}:{{ currentDateTime.minute }}:{{currentDateTime.second}}</div>
+    <div class="school-area">吴中区</div>
     <div>
       <ul>
         <li>
@@ -48,7 +49,7 @@ export default {
         return num < 10? `0${num}` : num
     },
     logout() {
-        this.$router.go(-1)
+        this.$router.push('/')
     }
   },
   computed: {
@@ -75,6 +76,11 @@ export default {
   font-size: .875rem /* 14/16 */;
   align-items: center;
   justify-content: space-between;
+}
+
+.school-area {
+  font-size: x-large;
+  color: #303133;
 }
 
 ul {

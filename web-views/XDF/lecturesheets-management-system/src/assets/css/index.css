@@ -1,0 +1,17 @@
+/* element-ui 样式问题 */
+.el-table {
+  height: 85%;
+  overflow: auto;
+}
+
+.el-table::before {
+  width: 0
+}
+
+.el-table th.gutter {
+    background-color: #eef1f6
+}
+
+.el-pagination {
+  text-align: center;
+}

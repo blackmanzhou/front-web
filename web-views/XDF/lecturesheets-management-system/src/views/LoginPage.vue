@@ -121,8 +121,9 @@ h1 {
   height: 100%;
   width: 100%;
   background: url("../assets/images/bg.jpg");
-  background-position: center center;
-  background-repeat: repeat;
+  background-size: 100% 100%;
+  /* background-position: center center;
+  background-repeat: repeat; */
   overflow-y: hidden;
   background-color: rgb(245, 245, 245);
 }

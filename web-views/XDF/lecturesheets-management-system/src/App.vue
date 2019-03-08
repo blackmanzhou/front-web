@@ -13,6 +13,7 @@ export default {
 <style>
 /* 引入公共颜色样式 */
 @import './assets/css/color.css';
+@import './assets/css/index.css';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

@@ -15,6 +15,7 @@
 import NavBar from '@/components/NavBar'
 import SideBar from '@/components/SideBar'
 import LevelBar from '@/components/LevelBar'
+// import FooterBar from '@/components/Footer'
 
 export default {
   name: "IndexPage",
