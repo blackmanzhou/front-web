@@ -1,6 +1,6 @@
-# student-share
+# student-share-new
 
-> 新东方学生分享
+> 学生分享报告新样式
 
 ## Build Setup
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>照片墙</title>
+
+<style type="text/css">
+* { margin:0; padding:0; }
+ul { width:700px;height:500px;margin:50px auto; }
+li { position:relative; float:left; list-style:none; width:100px; height:100px;}
+img { display:block; width:100%; }
+span { position:absolute; top:0; left:0; width:100%; height:100%; line-height:150px; text-align:center; font-size:50px; font-weight:bold; background:rgba(255, 255, 255, 0.7); color:red;  }
+.active { width:140px; height:140px; border:5px dashed red; }
+input { position:absolute; left:100px; top:100px; width:100px; height:30px; }
+</style>
+
+<script type="text/javascript" src="move.js"></script>
+<script type="text/javascript">
+window.onload=function (){
+	var aLi=document.getElementsByTagName('li');
+	var zIndex=1;
+	
+	// 布局转换
+	aPos=[];
+	for (var i=0; i<aLi.length; i++)
+	{
+		aPos.push({
+			left:aLi[i].offsetLeft,
+			top:aLi[i].offsetTop
+		});
+	}
+	
+	for (var i=0; i<aLi.length; i++)
+	{
+		aLi[i].style.position='absolute';
+		aLi[i].style.left=aPos[i].left+'px';
+		aLi[i].style.top=aPos[i].top+'px';
+		aLi[i].style.margin=0;
+	}
+	
+	// 随机换位
+
+		aPos.sort(function (){
+			return Math.random()-0.5;
+		});
+		
+		for (var i=0; i<aLi.length; i++)
+		{
+			move(aLi[i], aPos[i]);
+		}
+	};
+</script>
+
+</head>
+
+<body>
+	
+	<ul>
+		<li><img src="image/01.jpg" /></li>
+		<li><img src="image/02.jpg" /></li>
+		<li><img src="image/03.jpg" /></li>
+		
+		<li><img src="image/04.jpg" /></li>
+		<li><img src="image/05.jpg" /></li>
+		<li><img src="image/06.jpg" /></li>
+		
+		<li><img src="image/07.jpg" /></li>
+		<li><img src="image/08.jpg" /></li>
+		<li><img src="image/09.jpg" /></li>
+        
+        <li><img src="image/10.jpg" /></li>
+		<li><img src="image/11.jpg" /></li>
+		<li><img src="image/12.jpg" /></li>
+		
+		<li><img src="image/13.jpg" /></li>
+		<li><img src="image/14.jpg" /></li>
+		<li><img src="image/15.jpg" /></li>
+		
+		<li><img src="image/16.jpg" /></li>
+		<li><img src="image/17.jpg" /></li>
+		<li><img src="image/18.jpg" /></li>
+        
+        <li><img src="image/19.jpg" /></li>
+		<li><img src="image/20.jpg" /></li>
+		<li><img src="image/21.jpg" /></li>
+		
+		<li><img src="image/22.jpg" /></li>
+		<li><img src="image/23.jpg" /></li>
+		<li><img src="image/24.jpg" /></li>
+		
+		<li><img src="image/25.jpg" /></li>
+		<li><img src="image/26.jpg" /></li>
+		<li><img src="image/27.jpg" /></li>
+        
+        <li><img src="image/28.jpg" /></li>
+		<li><img src="image/29.jpg" /></li>
+		<li><img src="image/30.jpg" /></li>
+		
+		<li><img src="image/31.jpg" /></li>
+		<li><img src="image/32.jpg" /></li>
+		<li><img src="image/33.jpg" /></li>
+		
+		<li><img src="image/34.jpg" /></li>
+		<li><img src="image/35.jpg" /></li>
+	</ul>
+	
+</body>
+</html>
+
+
+
+
+
+
+
