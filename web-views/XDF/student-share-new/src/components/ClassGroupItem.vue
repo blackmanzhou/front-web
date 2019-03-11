@@ -31,7 +31,7 @@
             >产看详情</span>
           </p>
           <p class="color-font-grey font-size-small margin-top-4" style="display: flex; align-items: baseline">课堂表现：
-            <star-rate :score="classGroupObj.classPerformance"></star-rate>
+            <star-rate :score="classGroupObj.classPerformance" class="font-size-16"></star-rate>
           </p>
           <div
             class="color-font-grey font-size-small margin-top-8 text-overflow"
