@@ -1,119 +1,100 @@
 <template>
-    <div id="ProcessWay-Page">
-      <div class="section-content">
-            <p class="title"><span>成长历程</span></p>
-            <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
-            <div class="content-area">
-                 <p><img src="../assets/imgs/add.png" alt=""><span>2019年度</span></p>
-                 <p class="margin-left-25">寒假</p>
-                 <p v-for="(classObj, index) in studentClasses"
-                  :key="classObj.classCode"
-                  :class="classObj.classCode === currentClass.classCode? 'margin-left-35 class-font-size current-class' : 'margin-left-35 class-font-size'" 
-                  @click="changeCurrentClass(index)">
-                   {{classObj.className}}
-                 </p>
-            </div>
-            <!-- <p class="btn-goHome">
-              <button @click="goHome()">开始</button>
-            </p> -->
+  <div id="ProcessWay-Page">
+    <div>
+      <img src="../assets/imgs/head-icon.jpg" alt>
+    </div>
+    <div class="central-container margin-8-16">
+      <div class="border-bottom border-color-e6">
+        <p class="font-size-24">成长报告</p>
+        <p class="padding-top-8 color-font-grey">{{seasonTitle}}</p>
+        <p class="padding-top-8 color-font-grey">能力诊断：优秀 | 课堂表现：11111</p>
+      </div>
+      <div class="class-group-list">
+        <div
+          @click="goDetail()"
+          v-for="(item, index) in classList"
+          :key="index"
+          :class="index === 0? 'margin-top-16' : 'margin-top-8'"
+        >
+          <class-group-item :classGroupObj="item"></class-group-item>
+        </div>
       </div>
     </div>
+    <copyright-message></copyright-message>
+  </div>
 </template>
 
 <script>
-import { mutation } from '@/store'
+import { mutation } from "@/store";
+import { constants } from "@/common";
+import CopyrightMessage from "@/components/CopyrightMessage";
+import ClassGroupItem from "@/components/ClassGroupItem";
 export default {
-    name: 'ProcessWayPage',
-    data () {
-        return {
+  name: "ProcessWayPage",
+  components: {
+    ClassGroupItem,
+    CopyrightMessage
+  },
+  data() {
+    return {
+      seasonTitle: constants.seasonTitle,
+      classList: []
+    };
+  },
+  created() {
+    this.classList = this.getClassList();
+  },
+  computed: {
+    currentClass() {
+      return this.$store.state.currentClass;
+    },
 
-        }
-    },
-    created () {
-        
-    },
-    computed: {
-      currentClass () {
-        return this.$store.state.currentClass
-      },
-
-      studentClasses () {
-        return this.$store.state.classList
-      }
-    },
-    methods: {
-        goHome() {
-          this.$router.push('/home')
-        },
-        changeCurrentClass(index) {
-          this.$store.commit(mutation.CURRENTCLASS, this.$store.state.classList[index])
-          console.log(this.$store.state.currentClass)
-        }
+    studentClasses() {
+      return this.$store.state.classList;
     }
-}
+  },
+  methods: {
+    goDetail() {
+      console.log(1111111);
+      this.$router.push("/exclusive-energy");
+      // this.changeCurrentClass()
+    },
+    changeCurrentClass(index) {
+      this.$store.commit(
+        mutation.CURRENTCLASS,
+        this.$store.state.classList[index]
+      );
+      console.log(this.$store.state.currentClass);
+    },
+    getClassList() {
+      return constants.classList;
+    }
+  }
+};
 </script>
 <style scoped>
 #ProcessWay-Page {
-  display: flex;
-  align-items: center;
+  width: 100%;
   height: 100%;
-  background-color:#4e95ff;
-}
-#ProcessWay-Page .section-content {
-  background-image: url('../assets/imgs/loading-students.gif') ;
-  background-size: 100% 50%;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
-#ProcessWay-Page .content-area>p {
-  font-size: 1.25rem;
-  color: #9996CD;
-  font-weight: bold; 
-  padding: .25rem 0;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-#ProcessWay-Page .content-area>p:first-child {
-  display: flex;
-  align-items: center;
-  font-size: 1.625rem;
-  margin-top: 10%
-}
-
-#ProcessWay-Page .content-area>p:first-child>img {
-  margin-right: 1.25rem;
-}
-
-#ProcessWay-Page .content-area .margin-left-25 {
-  margin-left: 25%;
-}
-#ProcessWay-Page .content-area .margin-left-35 {
-  margin-left: 35%;
-}
-
-#ProcessWay-Page .content-area .class-font-size {
-  font-size: 1rem
-}
-#ProcessWay-Page .content-area .current-class {
-  color:#9996FA
-}
-
-.btn-goHome {
+#ProcessWay-Page > div:first-child {
+  background: url("../assets/imgs/bg-grass.jpg");
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 25%;
 }
 
-.btn-goHome>button {
-  width: 10rem;
-  border-style: none;
-  height: 1.625rem;
-  outline: none;
-  color: #fff;
-  background-color: #9996C6;
-  opacity: 0.6;
+#ProcessWay-Page > div:first-child > img {
+  height: 6rem;
+  width: 6rem;
+}
+#ProcessWay-Page .class-group-list {
+  width: 100%;
+  height: 23.75rem /* 380/16 */;
+  overflow: auto;
+  overflow-x: hidden;
 }
 </style>
 

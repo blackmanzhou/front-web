@@ -1,25 +1,26 @@
 <template>
     <div id='Front-Page'>
-        <img class='header-area' src='../assets/imgs/homepage-titleimg.jpg' alt=''>
+        <photo-wall></photo-wall>
         <v-touch v-on:swipeleft="goHomePage()">
           <div class='center-area'>
-            <div>
-                <img src='../assets/imgs/xinyao.png' alt=''>
+            <div class='color-font-green'>
+                <p>一  年  之 『积』 始  于  春。</p>
+                <p>a choice you make, a change life waiting ahead</p>
             </div>
-            
+            <div>
+                <p class="color-font-blue font-size-48">2019</p>
+                <p class="color-font-blue font-size-48">春季 - 期中</p>
+                <p class="color-font-pink font-size-32">学员成长报告</p>
+            </div>
             <div>
                 <ul>
                     <li>{{studentCode || NoDataMsg}}</li>
-                    <li>{{studentName || NoDataMsg}}</li>
                 </ul>
             </div>
           </div>
         </v-touch>
         <p><img src='../assets/imgs/arrow.png' alt='' id='twinkleArrow'/></p>
-        <div class='footer-area'>
-            <p>苏州新东方信息管理部</p>
-            <p>Copyright © 2019 stsuzhou.xdf.cn</p>
-        </div>
+        <copyright-message></copyright-message>
     </div>
 </template>
 
@@ -27,9 +28,15 @@
 import { API } from '@/services'
 import { mutation } from '@/store'
 import { resultMsg } from '@/common'
+import PhotoWall from '@/components/PhotoWall'
+import CopyrightMessage from '@/components/CopyrightMessage'
 
 export default {
     name: 'FrontPage',
+    components:{
+        PhotoWall,
+        CopyrightMessage
+    },
     data() {
         return {
             NoDataMsg: resultMsg.NO_NAME,
@@ -66,28 +73,28 @@ export default {
             return this.$store.state.student.studentCode
         }
     },
-    mounted: function () {
-      let opacityValue = 0;
+    mounted () {
+        let opacityValue = 0;
         let arrowElement = document.getElementById('twinkleArrow')
 
         setInterval(() => {
             opacityValue += 0.1
 
             if (arrowElement) {
-              arrowElement.style.opacity = opacityValue
-              if (opacityValue > 1) {
-                  opacityValue = 0
-              }
+                arrowElement.style.opacity = opacityValue
+                if (opacityValue > 1) {
+                    opacityValue = 0
+                }
             }
 
-        }, 100)
+        }, 100)        
     },
     methods: {
         goHomePage () {
-            if (!this.$store.state.student || !this.studentName) {
-                alert(resultMsg.STUDENT_INFO_ERROR)
-                return
-            }
+            // if (!this.$store.state.student || !this.studentName) {
+            //     alert(resultMsg.STUDENT_INFO_ERROR)
+            //     return
+            // }
 
             let router = this.$router
             setTimeout(function() {
@@ -102,7 +109,6 @@ export default {
                 alert(resultMsg.STUDENT_INFO_ERROR)
                 return
             }
-            console.log(1111111)
         },
 
         async getStudentAccount () {
@@ -146,22 +152,28 @@ export default {
     height: 45%
 }
 #Front-Page .center-area>div {
-    padding: .5rem
-}
-#Front-Page .center-area>div:first-child>img{
-  height: 9rem;
-}
-#Front-Page .center-area>div>ul>li {
+    width: 100%;
     text-align: center;
+    padding: .5rem
+
+}
+
+#Front-Page .center-area>div:first-child>p:first-child {
+    font-size: 1.25rem /* 20/16 */;
+    font-weight: bold;
+}
+#Front-Page .center-area>div:first-child>p:last-child {
+    font-family: 黑体;
+    font-size: small;
+}
+
+#Front-Page .center-area>div>ul>li {
     font-size: 1.5rem;
     font-family: 黑体
 }
 #Front-Page .center-area>div>ul>li:first-child {
     color: #999;
-    padding-bottom: 0.5rem
-}
-#Front-Page .center-area>div>ul>li:last-child {
-    color: #FF9C13
+    padding: 1rem
 }
 
 #Front-Page #twinkleArrow{
@@ -169,21 +181,6 @@ export default {
 	position: absolute;
 	left: 90%;
 	top: 60%;
-}
-
-#Front-Page .footer-area {
-    position: absolute;   
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    color: #999;
-}
-#Front-Page .footer-area>p:first-child {
-    font-size: .85rem
-}
-#Front-Page .footer-area>p:last-child {
-    font-size: .75rem;
-    padding: .25rem
 }
 </style>
 

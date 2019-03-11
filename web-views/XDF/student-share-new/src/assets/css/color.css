@@ -1,0 +1,51 @@
+.color-font-white {
+    color: #ffffff
+}
+
+.color-font-green {
+    color: #037C75
+}
+
+.color-font-blue {
+    color: #065ABA
+}
+
+.color-font-pink {
+    color: #DB016E
+}
+
+.color-font-grey {
+    color: #929292
+}
+
+.color-font-yellow {
+    color: #F7BA2A
+}
+
+.color-font-2c {
+    color: #2c2c2c
+}
+
+.bg-default {
+    background-color: #F2F2F2
+}
+
+.bg-white {
+    background-color: #ffffff
+}
+
+.bg-color-orange {
+    background-color: #FF9934;
+}
+
+.border-color-default {
+    border-color: #F2F2F2
+}
+
+.border-color-orange {
+    border-color: #FF9934
+}
+
+.border-color-e6 {
+    border-color: #e6e6e6
+}
