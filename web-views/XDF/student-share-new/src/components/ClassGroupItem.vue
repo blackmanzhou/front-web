@@ -28,7 +28,7 @@
             <span class="color-font-2c">{{classGroupObj.className}}</span>
             <span
               class="color-font-white bg-color-orange border-color-orange border-radius-8 padding-8-2 font-size-xsmall"
-            >产看详情</span>
+            >查看详情</span>
           </p>
           <p class="color-font-grey font-size-small margin-top-4" style="display: flex; align-items: baseline">课堂表现：
             <star-rate :score="classGroupObj.classPerformance" class="font-size-16"></star-rate>

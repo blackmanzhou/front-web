@@ -26,6 +26,10 @@
     color: #2c2c2c
 }
 
+.color-font-c {
+  color: #cccccc
+}
+
 .bg-default {
     background-color: #F2F2F2
 }
@@ -38,8 +42,16 @@
     background-color: #FF9934;
 }
 
+.bg-color-pink {
+  background-color: #ff5152;
+}
+
 .border-color-default {
     border-color: #F2F2F2
+}
+
+.border-color-white {
+  border-color: #ffffff;
 }
 
 .border-color-orange {

@@ -1,60 +1,9 @@
 <template>
-    <div id="ExclusiveEnergy-Page">
-         <div class="section-content">
-            <p class="title"><span>专属能量</span></p>
-            <p class="class-name">{{className}}</p>
-            <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
-            <div class="content-area">
-                <div>
-                    <ul>
-                        <li>课堂纪律：
-                            <span  v-if="classPerformance && classPerformance.discipline">
-                                <label v-for="num in classPerformance.discipline" :key="num">&#9733;</label>      
-                            </span>
-                            <span  v-else>
-                                <label v-for="num in 5" :key="num">&#9733;</label>      
-                            </span>
-                        </li>
-                        <li>理解能力：
-                            <span  v-if="classPerformance && classPerformance.comprehension">
-                                <label v-for="num in classPerformance.comprehension" :key="num">&#9733;</label>      
-                            </span>
-                            <span  v-else>
-                                <label v-for="num in 5" :key="num">&#9733;</label>      
-                            </span>
-                        </li>		  
-                        <li>运用能力：
-                            <span  v-if="classPerformance && classPerformance.application">
-                                <label v-for="num in classPerformance.application" :key="num">&#9733;</label>      
-                            </span>
-                            <span  v-else>
-                                <label v-for="num in 5" :key="num">&#9733;</label>      
-                            </span>
-                        </li>
-                        <li>积 极  性  ：
-                            <span  v-if="classPerformance && classPerformance.positivity">
-                                <label v-for="num in classPerformance.positivity" :key="num">&#9733;</label>      
-                            </span>
-                            <span  v-else>
-                                <label v-for="num in 5" :key="num">&#9733;</label>      
-                            </span>
-                        </li>				  
-                        <li>注 意  力  ：
-                            <span  v-if="classPerformance && classPerformance.attention">
-                                <label v-for="num in classPerformance.attention" :key="num">&#9733;</label>      
-                            </span>
-                            <span  v-else>
-                                <label v-for="num in 5" :key="num">&#9733;</label>      
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <p><span class="student-name">{{studentName || 'X X'}}</span>同学：</p>
-                    <p>{{classPerformance.evaluation || NoDataMsg}}</p>
-                </div>
-            </div>
-        </div>
+    <div id="ExclusiveEnergy-Page" class="page-container">
+      <v-touch class="section-content border-radius-8 border-color-default" v-on:swipeleft="goBack()" v-on:swiperight="goNext()">
+        <header-title :title="title"></header-title>
+      </v-touch>
+      <run-horse></run-horse>
     </div>
 </template>
 
@@ -62,10 +11,18 @@
 import { API } from '@/services'
 import { mutation } from '@/store'
 import { resultMsg } from '@/common'
+import RunHorse from '@/components/RunHorse'
+import HeaderTitle from '@/components/HeaderTitle'
+
 export default {
     name: 'ExclusiveEnergyPage',
+    components: {
+      RunHorse,
+      HeaderTitle
+    },
     data () {
         return {
+            title: '课堂表现',
             NoDataMsg: resultMsg.WAITING_FOR_TEACHER
         }
     },
@@ -90,8 +47,11 @@ export default {
         }
     },
     methods: {
-        goHome () {
-            this.$router.push('/home')
+        goBack() {
+          alert(-1)
+        },
+        goNext() {
+          alert(1)
         },
         async load() {
             const response = await API.getExclusiveEnengyInfo(this.studentCode, this.classCode)
@@ -121,43 +81,10 @@ export default {
 </script>
 
 <style scoped>
-#ExclusiveEnergy-Page {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    background-color:#4e95ff;
-}
-
-#ExclusiveEnergy-Page .content-area>div:first-child {
-    margin: 15% auto;
-    font-size: 1.125rem
-}
-#ExclusiveEnergy-Page .content-area>div:last-child {
-    line-height: 2rem;
-}
-#ExclusiveEnergy-Page .content-area>div:last-child>p:last-child {
-    text-indent: 2rem;
-    font-size: .95rem;
-}
-
-#ExclusiveEnergy-Page .content-area .student-name {
-    font-size: 1.25rem;
-    padding-right: .625rem; 
-}
-#ExclusiveEnergy-Page .content-area>div>ul>li {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-}
-
-#ExclusiveEnergy-Page .content-area>div>ul>li>span>label {
-    font-size: 1.6rem;
-    color: #FFEB66;
-    padding-left: .25rem
-}
-
-#ExclusiveEnergy-Page .content-area>div>ul>li>span:last-child>label {
-    color: #dbdbdb
+#ExclusiveEnergy-Page #run-horse{
+  height: 3%;
+  position: absolute;
+  bottom: .25rem
 }
 </style>
 
