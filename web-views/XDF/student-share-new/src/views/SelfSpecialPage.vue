@@ -6,8 +6,8 @@
       v-on:swiperight="goBack()"
     >
       <header-title :title="title"></header-title>
-      <div class="content-container bg-boy">
-        <span class="font-size-56 color-font-f3c fix-keyword">{{ keyword || '暂  无'}}</span>
+      <div class="content-container bg-boy bg">
+        <span class="font-size-56 color-font-f3c fix-keyword" style="height: 20%">{{ keyword || '暂  无'}}</span>
       </div>
     </v-touch>
     <run-horse :currentIndex="3"></run-horse>
@@ -75,23 +75,17 @@ export default {
   top: 65%
 }
 
-/* #SelfSpecial-Page .bg {
-  background-position: center center;
-  background-size: 100% 85%;
-  background-repeat: no-repeat;
-} */
-
-#SelfSpecial-Page .bg-boy {
-  background: url('../assets/imgs/boy.jpg');
+#SelfSpecial-Page .bg {
   background-position: center center;
   background-size: 100% 85%;
   background-repeat: no-repeat;
 }
 
+#SelfSpecial-Page .bg-boy {
+  background-image: url('../assets/imgs/boy.jpg');
+}
+
 #SelfSpecial-Page .bg-girl {
   background: url('../assets/imgs/girl.jpg');
-  background-position: center center;
-  background-size: 100% 85%;
-  background-repeat: no-repeat;
 }
 </style>
