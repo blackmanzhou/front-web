@@ -5,6 +5,7 @@
       :class="!recommendBooks || recommendBooks.length == 0? 'NO-data' : ''"
       v-on:swipeleft="goNext()"
       v-on:swiperight="goBack()"
+      :swipe-options="{direction: 'horizontal'}"
     >
       <header-title :title="title"></header-title>
       <book-list class="bookList" :booklist="recommendBooks"></book-list>

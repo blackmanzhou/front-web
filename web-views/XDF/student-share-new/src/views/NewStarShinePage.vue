@@ -4,16 +4,19 @@
       class="section-content border-radius-8 border-color-default"
       v-on:swipeleft="goNext()"
       v-on:swiperight="goBack()"
+      :swipe-options="{direction: 'horizontal'}"
     >
       <header-title :title="title"></header-title>
       <div class="margin-top-16 text-align-center">
         <img style="width: 75%" src="../assets/imgs/excellent.jpg" alt>
       </div>
-      <p class="padding-r-l-16 margin-top-16">{{studentName || NoName}}同学</p>
-      <p class="two-space padding-16 font-size-15 line-height-24">
-        你是一个积极向上，有信心的孩子。学习上有计划、有目标，能够合理安排自己的时间，学习状态挺好；心态平和，关心、帮助同学，
-        关心班集体，积极参加班级、学校组织的各项活动，具有较强的劳动观念，积极参加体育活动，尊敬师长。希望你再接再厉，不满足于现状，争取做得更好。
-      </p>
+      <div style="height:55%; overflow: auto">
+        <p class="padding-r-l-16 margin-top-16">{{studentName || NoName}}同学</p>
+        <p class="two-space padding-16 font-size-15 line-height-24">
+          你是一个积极向上，有信心的孩子。学习上有计划、有目标，能够合理安排自己的时间，学习状态挺好；心态平和，关心、帮助同学，
+          关心班集体，积极参加班级、学校组织的各项活动，具有较强的劳动观念，积极参加体育活动，尊敬师长。希望你再接再厉，不满足于现状，争取做得更好。
+        </p>
+      </div>
     </v-touch>
     <run-horse :currentIndex="2"></run-horse>
   </div>
@@ -116,6 +119,5 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
 

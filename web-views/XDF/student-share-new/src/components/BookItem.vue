@@ -1,6 +1,6 @@
 <template>
   <div id="book-item" class="margin-l-r-auto padding-t-b-16" :class="isShowBottom? 'border-bottom border-color-default': ''">
-    <img :src="book.imgsrc" alt class="margin-right-8">
+    <img src="../assets/imgs/TheKiteRunner.jpg" alt class="margin-right-8">
 
     <div class="font-size-xsmall">
       <span class="line-height-24 font-size-16">《{{book.name}}》</span>

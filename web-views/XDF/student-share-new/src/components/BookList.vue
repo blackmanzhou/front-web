@@ -22,3 +22,10 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+#book-list {
+  width: 100%;
+  height: 100%
+}
+</style>

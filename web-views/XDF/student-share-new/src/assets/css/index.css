@@ -21,6 +21,7 @@ img {
   height: 97%;
   width: 100%;
   padding-top: 5%;
+  overflow: auto;
 }
 
 .section-content {
@@ -28,6 +29,7 @@ img {
   height: 95%;
   margin: 0 auto;
   background-color: #fff;
+  overflow: auto;
 }
 
 .NO-data {
@@ -219,4 +221,8 @@ img {
 /* line-height */
 .line-height-24 {
   line-height: 1.5rem
+}
+
+.line-height-28 {
+  line-height: 1.75rem /* 28/16 */
 }

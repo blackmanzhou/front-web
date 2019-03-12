@@ -92,7 +92,7 @@ export default {
 }
 #ProcessWay-Page .class-group-list {
   width: 100%;
-  height: 23.75rem /* 380/16 */;
+  height: 20rem;
   overflow: auto;
   overflow-x: hidden;
 }

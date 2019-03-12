@@ -4,12 +4,13 @@
       class="section-content border-radius-8 border-color-default"
       v-on:swipeleft="goNext()"
       v-on:swiperight="goBack()"
+      :swipe-options="{direction: 'horizontal'}"
     >
       <header-title :title="title"></header-title>
       <div id="radar-chart" :style="{width: '100%', height: '50%'}"></div>
-      <div>
+      <div style="height: 35%; overflow: auto; margin-top: -1.5rem">
         <p class="padding-r-l-16" s>{{studentName || NoName}}同学</p>
-        <p class="two-space padding-16 font-size-15 line-height-24">
+        <p class="two-space padding-r-l-16 padding-top-8 font-size-15 line-height-24">
           你是一个积极向上，有信心的孩子。学习上有计划、有目标，能够合理安排自己的时间，学习状态挺好；心态平和，关心、帮助同学，
           关心班集体，积极参加班级、学校组织的各项活动，具有较强的劳动观念，积极参加体育活动，尊敬师长。希望你再接再厉，不满足于现状，争取做得更好。
         </p>
