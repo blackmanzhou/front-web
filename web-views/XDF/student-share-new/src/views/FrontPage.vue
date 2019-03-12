@@ -8,9 +8,8 @@
                 <p>a choice you make, a change life waiting ahead</p>
             </div>
             <div>
-                <p class="color-font-blue font-size-48">2019</p>
-                <p class="color-font-blue font-size-48">春季 - 期中</p>
-                <p class="color-font-pink font-size-32">学员成长报告</p>
+                <p class="color-font-pink font-size-48">学员成长报告</p>
+                <p class="color-font-blue font-size-32">春季 · 期中</p>          
             </div>
             <div>
                 <ul>

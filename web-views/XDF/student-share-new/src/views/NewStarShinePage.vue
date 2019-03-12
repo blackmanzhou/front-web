@@ -1,126 +1,121 @@
 <template>
-    <div id="NewStarShine-Page">
-        <div class="section-content">
-            <p class="title"><span>新光闪耀</span></p>
-            <p class="class-name">{{className}}</p>
-            <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
-            <div class="content-area">
-                <div>
-                    <ul>
-                        <li>随堂诊断：<span>{{gradeInfo.grade || '暂未公布成绩'}}</span></li>
-                    </ul>
-                </div>
-                <div>
-                    <p><span class="student-name">{{studentName || 'X X'}}</span>同学：</p>
-                    <p>{{gradeInfo.evaluation || NoDataMsg}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="NewStarShine-Page" class="page-container">
+    <v-touch
+      class="section-content border-radius-8 border-color-default"
+      v-on:swipeleft="goNext()"
+      v-on:swiperight="goBack()"
+    >
+      <header-title :title="title"></header-title>
+      <div class="margin-top-16 text-align-center">
+        <img style="width: 75%" src="../assets/imgs/excellent.jpg" alt>
+      </div>
+      <p class="padding-r-l-16 margin-top-16">{{studentName || NoName}}同学</p>
+      <p class="two-space padding-16 font-size-15 line-height-24">
+        你是一个积极向上，有信心的孩子。学习上有计划、有目标，能够合理安排自己的时间，学习状态挺好；心态平和，关心、帮助同学，
+        关心班集体，积极参加班级、学校组织的各项活动，具有较强的劳动观念，积极参加体育活动，尊敬师长。希望你再接再厉，不满足于现状，争取做得更好。
+      </p>
+    </v-touch>
+    <run-horse :currentIndex="2"></run-horse>
+  </div>
 </template>
 
 <script>
-import { API } from '@/services'
-import { mutation } from '@/store'
-import { resultMsg } from '@/common'
+import { API } from "@/services";
+import { mutation } from "@/store";
+import { resultMsg } from "@/common";
+import RunHorse from "@/components/RunHorse";
+import HeaderTitle from "@/components/HeaderTitle";
 
 export default {
-    name: 'NewStarShinePagePage',
-    data () {
-        return {
-            NoDataMsg: resultMsg.WAITING_FOR_TEACHER
-        }
+  name: "NewStarShinePagePage",
+  components: {
+    RunHorse,
+    HeaderTitle
+  },
+  data() {
+    return {
+      NoName: resultMsg.NO_NAME,
+      NoDataMsg: resultMsg.WAITING_FOR_TEACHER,
+      title: "能力诊断"
+    };
+  },
+  async created() {
+    await this.load();
+  },
+  computed: {
+    studentName() {
+      return this.$store.state.student.studentName;
     },
-    async created () {
-        await this.load()
+    studentCode() {
+      return this.$store.state.student.studentCode;
     },
-    computed: {
-        studentName () {
-            return this.$store.state.student.studentName
-        },
-        studentCode () {
-            return this.$store.state.student.studentCode
-        },
-        classCode () {
-            return this.$store.state.currentClass.classCode
-        },
-        className () {
-            return this.$store.state.currentClass.className
-        },
-        gradeInfo () {
-            return this.$store.state.xdfGrade
-        }   
+    classCode() {
+      return this.$store.state.currentClass.classCode;
     },
-    methods: {
-        goHome () {
-            this.$router.push('/home')
-        },
-        async load() {
-            let response = await API.getNewStarShineInfo(this.studentCode, this.classCode)
-            console.log(response)
-            if (response && response.data) {
-                const gradeList = response.data.XDFGradeList
-                if (gradeList && gradeList.length > 0) {
-                     this.$store.commit(mutation.XDFGRADE, this.convertGrade(gradeList[0]))
-                }
-            }
-        },
-        convertGrade(data) {
-            let grade = {
-                score: data.XGScore,
-                fullScore: data.XGFullScore,
-                examType: data.XGExamType,
-                subject: data.XGSubject,
-                evaluation: data.XGDescribe,
-                grade: this.mapGradeByScore(data.XGScore, data.XGFullScore)
-            }
-            
-            return grade
-        },
-        mapGradeByScore(score, fullScore) {
-            let index = 0
-            const scoreRate = score / fullScore
-            const Grades = ['优秀','良好','中等','及格','不及格']
-
-            if (scoreRate < 0.6) {
-                index = 4
-            } else if (scoreRate < 0.7) {
-                index = 3
-            } else if (scoreRate < 0.8) {
-                index = 2
-            } else if (scoreRate < 0.9) {
-                index = 1
-            }
-
-            return Grades[index]
-        }
+    className() {
+      return this.$store.state.currentClass.className;
+    },
+    gradeInfo() {
+      return this.$store.state.xdfGrade;
     }
-}
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+    goNext() {
+      this.$router.push("/self-special");
+    },
+    async load() {
+      let response = await API.getNewStarShineInfo(
+        this.studentCode,
+        this.classCode
+      );
+      console.log(response);
+      if (response && response.data) {
+        const gradeList = response.data.XDFGradeList;
+        if (gradeList && gradeList.length > 0) {
+          this.$store.commit(
+            mutation.XDFGRADE,
+            this.convertGrade(gradeList[0])
+          );
+        }
+      }
+    },
+    convertGrade(data) {
+      let grade = {
+        score: data.XGScore,
+        fullScore: data.XGFullScore,
+        examType: data.XGExamType,
+        subject: data.XGSubject,
+        evaluation: data.XGDescribe,
+        grade: this.mapGradeByScore(data.XGScore, data.XGFullScore)
+      };
+
+      return grade;
+    },
+    mapGradeByScore(score, fullScore) {
+      let index = 0;
+      const scoreRate = score / fullScore;
+      const Grades = ["优秀", "良好", "中等", "及格", "不及格"];
+
+      if (scoreRate < 0.6) {
+        index = 4;
+      } else if (scoreRate < 0.7) {
+        index = 3;
+      } else if (scoreRate < 0.8) {
+        index = 2;
+      } else if (scoreRate < 0.9) {
+        index = 1;
+      }
+
+      return Grades[index];
+    }
+  }
+};
 </script>
 
 <style scoped>
-#NewStarShine-Page {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    background-color:#4e95ff;
-}
-
-#NewStarShine-Page .content-area>div:first-child {
-    margin: 20% auto;
-    font-size: 1.125rem
-}
-#NewStarShine-Page .content-area>div:last-child {
-    line-height: 2rem
-}
-#NewStarShine-Page .content-area>div:last-child>p:last-child {
-    text-indent: 2rem
-}
-
-#NewStarShine-Page .content-area .student-name {
-    font-size: 1.25rem;
-    padding-right: 0.625rem;
-}
 
 </style>
 

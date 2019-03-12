@@ -1,76 +1,97 @@
 <template>
-    <div id="SelfSpecial-Page">
-        <div class="section-content">
-            <p class="title"><span>独特的我</span></p>
-            <p class="class-name">{{className}}</p>
-            <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
-            <div class="content-area">
-                <span>{{ keyword || '暂无' }}</span>
-                <img src="../assets/imgs/keyword.jpg" alt="">
-            </div>
-        </div>
-    </div>
+  <div id="SelfSpecial-Page" class="page-container">
+    <v-touch
+      class="section-content border-radius-8 border-color-default"
+      v-on:swipeleft="goNext()"
+      v-on:swiperight="goBack()"
+    >
+      <header-title :title="title"></header-title>
+      <div class="content-container bg-boy">
+        <span class="font-size-56 color-font-f3c fix-keyword">{{ keyword || '暂  无'}}</span>
+      </div>
+    </v-touch>
+    <run-horse :currentIndex="3"></run-horse>
+  </div>
 </template>
 
 <script>
-import { API } from '@/services'
-import { mutation } from '@/store'
+import { API } from "@/services";
+import { mutation } from "@/store";
+import RunHorse from "@/components/RunHorse";
+import HeaderTitle from "@/components/HeaderTitle";
 
 export default {
-    name: 'SelfSpecialPage',
-    data () {
-        return {
-
-        }
+  name: "SelfSpecialPage",
+  components: {
+    RunHorse,
+    HeaderTitle
+  },
+  data() {
+    return {
+      title: "关键词"
+    };
+  },
+  async created() {
+    await this.render();
+  },
+  computed: {
+    keyword() {
+      return this.$store.state.selfKeyword;
     },
-    async created () {
-        await this.render()
-    },
-    computed: {
-        keyword() {
-            return this.$store.state.selfKeyword
-        },
-        className () {
-            return this.$store.state.currentClass.className
-        },
-    },
-    methods: {
-        goHome () {
-            this.$router.push('/home')
-        },
-        async render () {
-            const studentCode = this.$store.state.student.studentCode
-            const classCode = this.$store.state.currentClass.classCode
-            let response = await API.getSelfSpecialInfo(studentCode, classCode)
-            if (response) {
-                this.$store.commit(mutation.SELFKEYWORD, response.keyword)
-            }
-        }
+    className() {
+      return this.$store.state.currentClass.className;
     }
-}
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+    goNext() {
+      this.$router.push("/share");
+    },
+    async render() {
+      const studentCode = this.$store.state.student.studentCode;
+      const classCode = this.$store.state.currentClass.classCode;
+      let response = await API.getSelfSpecialInfo(studentCode, classCode);
+      if (response) {
+        this.$store.commit(mutation.SELFKEYWORD, response.keyword);
+      }
+    }
+  }
+};
 </script>
 
 <style scoped>
-#SelfSpecial-Page {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    background-color:#4e95ff;
+#SelfSpecial-Page .content-container {
+  width: 90%;
+  height: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
-#SelfSpecial-Page .section-content .content-area {
-    overflow: hidden;
+.fix-keyword {
+  position: relative;
+  top: 65%
 }
 
-#SelfSpecial-Page .content-area>img {
-    height: 100%;
-    width: 100%;
+/* #SelfSpecial-Page .bg {
+  background-position: center center;
+  background-size: 100% 85%;
+  background-repeat: no-repeat;
+} */
+
+#SelfSpecial-Page .bg-boy {
+  background: url('../assets/imgs/boy.jpg');
+  background-position: center center;
+  background-size: 100% 85%;
+  background-repeat: no-repeat;
 }
-#SelfSpecial-Page .content-area>span {
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    width: 4rem;
-    font-size: 4rem;
+
+#SelfSpecial-Page .bg-girl {
+  background: url('../assets/imgs/girl.jpg');
+  background-position: center center;
+  background-size: 100% 85%;
+  background-repeat: no-repeat;
 }
 </style>

@@ -14,6 +14,10 @@
     color: #DB016E
 }
 
+.color-font-f3c {
+    color: #FF33CC
+}
+
 .color-font-grey {
     color: #929292
 }
@@ -60,4 +64,8 @@
 
 .border-color-e6 {
     border-color: #e6e6e6
+}
+
+.border-color-pink {
+    border-color: #ff5152
 }

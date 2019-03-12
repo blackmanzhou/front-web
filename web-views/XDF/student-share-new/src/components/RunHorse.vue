@@ -20,7 +20,7 @@ export default {
     pageList: {
       type: Array,
       default: () => {
-        return  ['课堂表现', '能力诊断', '关键词', '推荐读物', '精彩瞬间']     
+        return  ['课堂表现', '能力诊断', '关键词', '寄语', '推荐读物', '精彩瞬间']     
       }
     }
   }

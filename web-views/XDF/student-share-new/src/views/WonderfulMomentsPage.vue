@@ -1,16 +1,12 @@
 <template>
-    <div id="WonderfulMoments-Page">
-      <div class="section-content" :class="!wonderfulMoments || wonderfulMoments.length == 0? 'NO-data' : ''">
-            <p class="title"><span>精彩瞬间</span></p>
-            <p class="class-name">{{className}}</p>
-            <span class="btn-close" @click="goHome()"><img src="../assets/imgs/btn-close.png" alt="" /></span>
-            <div class="content-area">
-                 <ul v-if="wonderfulMoments && wonderfulMoments.length > 0">
-                   <li v-for="(moment, index) in wonderfulMoments" :key="index"><img :src="moment" alt=""></li>
-                 </ul>
-                 <span v-else>{{NoDataMsg}}</span>
-            </div>
-      </div>
+    <div id="WonderfulMoments-Page" class="page-container">
+      <v-touch class="section-content border-radius-8 border-color-default" 
+      :class="!wonderfulMoments || wonderfulMoments.length == 0? 'NO-data' : ''"
+      v-on:swipeleft="goNext()"
+      v-on:swiperight="goBack()">
+        <header-title :title="title"></header-title>
+      </v-touch>
+      <run-horse :currentIndex="6"></run-horse>
     </div>
 </template>
 
@@ -18,11 +14,18 @@
 import { API } from '@/services'
 import { mutation } from '@/store'
 import { resultMsg } from '@/common'
+import RunHorse from "@/components/RunHorse";
+import HeaderTitle from "@/components/HeaderTitle";
 
 export default {
     name: 'WonderfulMomentsPage',
+    components: {
+      RunHorse,
+      HeaderTitle
+    },
     data () {
         return {
+          title: '精彩瞬间',
           NoDataMsg: resultMsg.WAITING_FOR_TEACHER
         }
     },
@@ -38,8 +41,12 @@ export default {
       },
     },
     methods: {
-        goHome() {
-          this.$router.push('/home')
+        goBack() {
+          this.$router.go(-1)
+        },
+
+        goNext() {
+          console.log('lalalala...')
         },
         async render() {
           const studentCode = this.$store.state.student.studentCode
@@ -65,21 +72,6 @@ export default {
 }
 </script>
 <style scoped>
-#WonderfulMoments-Page {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  background-color:#4e95ff;
-}
-
-#WonderfulMoments-Page .content-area>ul {
-  height: 100%;
-  overflow: auto;
-}
-
-#WonderfulMoments-Page .content-area>ul>li>img {
-  width: 100%
-}
 </style>
 
 
