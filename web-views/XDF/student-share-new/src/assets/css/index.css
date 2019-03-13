@@ -114,6 +114,10 @@ img {
   font-size: 3.5rem;
 }
 
+.font-bold {
+  font-weight: bold
+}
+
 .text-align-center {
   text-align: center;
 }
@@ -133,6 +137,10 @@ img {
 
 .padding-top-8 {
   padding-top: .5rem
+}
+
+.padding-top-48 {
+  padding-top: 3rem;
 }
 
 .padding-8 {
@@ -186,6 +194,10 @@ img {
   margin: 1rem
 }
 
+.margin-bottom-48 {
+  margin-bottom: -3rem
+}
+
 /* border */
 .border-2 {
   border: .125rem solid/* 2/16 */
@@ -225,4 +237,9 @@ img {
 
 .line-height-28 {
   line-height: 1.75rem /* 28/16 */
+}
+
+/* z-index */
+.z-index-500 {
+  z-index: 500
 }

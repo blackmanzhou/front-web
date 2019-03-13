@@ -26,19 +26,9 @@ let store = new Vuex.Store({
         },
         classList(state, classes) {
             if (classes) {
-                let newClassArray = []
-                classes.forEach(item => {
-                    newClassArray.push({
-                        classCode: item.CIClassCode,
-                        className: item.CIClassName
-                    })
-                })
-
-                state.classList = newClassArray
-                if (newClassArray[0]) {
-                    state.currentClass = newClassArray[0]
-                }
+               state.classList = classes
             }
+            console.log(state)
         },
         currentClass(state, classObj) {
             if (classObj) {
@@ -52,6 +42,7 @@ let store = new Vuex.Store({
             if(books) {
                 state.recommendBooks = books
             }
+            console.log(state)
         },
         teacherEvaluation(state, evaluation) {
             state.teacherEvaluation = evaluation

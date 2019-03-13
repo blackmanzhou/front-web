@@ -4,19 +4,19 @@
       <div>
         <div>
           <img
-            v-if="classGroupObj.className.indexOf('数学') > 0"
+            v-if="classGroupObj.subject == '数学'"
             src="../assets/imgs/math.jpg"
             alt
             class="border-radius-4"
           >
           <img
-            v-else-if="classGroupObj.className.indexOf('语文') > 0"
+            v-else-if="classGroupObj.subject =='语文'"
             src="../assets/imgs/chinese.jpg"
             alt
             class="border-radius-4"
           >
           <img
-            v-else-if="classGroupObj.className.indexOf('英语') > 0"
+            v-else-if="classGroupObj.subject =='英语'"
             src="../assets/imgs/english.jpg"
             alt
             class="border-radius-4"
@@ -25,22 +25,22 @@
         </div>
         <div>
           <p style="display:flex;justify-content: space-between">
-            <span class="color-font-2c">{{classGroupObj.className}}</span>
+            <span class="color-font-2c font-size-15">{{classGroupObj.className}}</span>
             <span
               class="color-font-white bg-color-orange border-color-orange border-radius-8 padding-8-2 font-size-xsmall"
-            >查看详情</span>
+            >查看报告</span>
           </p>
           <p class="color-font-grey font-size-small margin-top-4" style="display: flex; align-items: baseline">课堂表现：
-            <star-rate :score="classGroupObj.classPerformance" class="font-size-16"></star-rate>
+            <star-rate :score="classGroupObj.classPerformance.application? classGroupObj.classPerformance.application : 5" class="font-size-16"></star-rate>
           </p>
           <div
             class="color-font-grey font-size-small margin-top-8 text-overflow"
             style="max-width: 13.75rem"
-          >教师寄语：{{classGroupObj.teacherEvaluation}}</div>
+          >教师寄语：{{classGroupObj.teacherEvaluation || defaultTeacherEvaluation }}</div>
         </div>
       </div>
       <div class="margin-top-4 padding-0-4">
-        <span class="color-font-grey font-size-small">{{classGroupObj.timeInterval}}前</span>
+        <span class="color-font-grey font-size-small">20小时前</span>
         <span>
           <span
             class="color-font-grey margin-right-8 font-size-small"
@@ -73,6 +73,11 @@ export default {
           teacherName: constants.defaultTeacherName
         };
       }
+    }
+  },
+  data() {
+    return {
+      defaultTeacherEvaluation: constants.defaultTeacherEvaluation
     }
   }
 };

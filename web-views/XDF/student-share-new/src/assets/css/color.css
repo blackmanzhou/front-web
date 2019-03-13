@@ -38,6 +38,13 @@
     background-color: #F2F2F2
 }
 
+.bg-no-data {
+    background-image: url('../imgs/waiting.gif');
+    background-size: 80%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 .bg-white {
     background-color: #ffffff
 }

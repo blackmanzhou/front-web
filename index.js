@@ -49,3 +49,24 @@ const last = compose(head, reverse)
 const ele = last(['tom', 'jack', 'allen', 'lily'])
 console.log(ele)
 console.log(JSON.parse("{\"bindingid\":\"F9E26DC9-DCFE-462C-B68A-986007DB9D15\",\"schoolid\":\"23\",\"studentname\":\"尹丹婷\",\"studentmoblie\":\"18963657923\",\"studentcode\":\"SZS20810\",\"bindingdate\":1530335996000,\"openid\":\"oxdxlt3lMS0qldGvwY6X7aptAmLc\",\"pic\":\"http://i.xdf.cn/card/QrImages/school_23_studentcode_SZS20810.png\",\"unionid\":\"\",\"isdefault\":1}"))
+
+
+let testArray = [1, 2, 3]
+
+for (let i of testArray) {
+    console.log(i)
+}
+
+for (let i in testArray) {
+    console.log(i)
+}
+
+let testObj = {
+    's': {
+        name: 'tom'
+    },
+
+    'l': {
+        
+    }
+}
