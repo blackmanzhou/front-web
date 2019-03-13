@@ -57,12 +57,12 @@ export default {
 
       const accountInfo = await this.getStudentAccount()
 
-    //   if (!this.openid || !accountInfo || !accountInfo.studentcode) {
-    //       window.location.href = 'http://wxpay.xdf.cn/silenceauthorize/view.do?schoolid=23&callid=25&parm=23'
-    //   } else {
-    //       const studentCode = accountInfo.studentcode
-    //       await this.render(studentCode)
-    //   }
+      if (!this.openid || !accountInfo || !accountInfo.studentcode) {
+          window.location.href = 'http://wxpay.xdf.cn/silenceauthorize/view.do?schoolid=23&callid=25&parm=23'
+      } else {
+          const studentCode = accountInfo.studentcode
+          await this.render(studentCode)
+      }
     },
     computed: {
         studentName () {
@@ -90,10 +90,10 @@ export default {
     },
     methods: {
         goHomePage () {
-            // if (!this.$store.state.student || !this.studentName) {
-            //     alert(resultMsg.STUDENT_INFO_ERROR)
-            //     return
-            // }
+            if (!this.$store.state.student || !this.studentName) {
+                alert(resultMsg.STUDENT_INFO_ERROR)
+                return
+            }
 
             let router = this.$router
             setTimeout(function() {
