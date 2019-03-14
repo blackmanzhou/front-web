@@ -5,7 +5,7 @@
       v-on:swipeleft="goNext()"
       v-on:swiperight="goBack()"
     >
-      <header-title :title="title"></header-title>
+      <header-title :title="title" :className="className"></header-title>
       <div class="content-container bg-boy bg">
         <span class="font-size-56 color-font-f3c fix-keyword" style="height: 20%">{{ keyword || '暂  无'}}</span>
       </div>
@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     keyword() {
-      return this.$store.state.selfKeyword;
+      return this.$store.state.currentClass.keyword;
     },
     className() {
       return this.$store.state.currentClass.className;

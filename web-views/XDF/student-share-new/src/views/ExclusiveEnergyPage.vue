@@ -156,6 +156,14 @@ export default {
       let radarChart = this.$echarts.init(
         document.getElementById("radar-chart")
       );
+      console.log(this.chartOption)
+      this.chartOption.series[0].data[0].value = [
+        this.classPerformance.discipline,
+        this.classPerformance.comprehension,
+        this.classPerformance.application,
+        this.classPerformance.attention,
+        this.classPerformance.positivity
+      ]
       radarChart.setOption(this.chartOption);
     }
   }

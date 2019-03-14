@@ -91,21 +91,21 @@ export default {
   methods: {
     async render(studentCode) {
       studentCode = "SZS136900";
-      await this.getStudentBaseInfo(studentCode);
+      // await this.getStudentBaseInfo(studentCode);
 
-      if (!this.$store.state.student || !this.studentName) {
-        alert(resultMsg.STUDENT_INFO_ERROR);
-        return;
-      }
+      // if (!this.$store.state.student || !this.studentName) {
+      //   alert(resultMsg.STUDENT_INFO_ERROR);
+      //   return;
+      // }
 
-      await this.getClassesByStudentCode(studentCode);
+      // await this.getClassesByStudentCode(studentCode);
     },
 
     goHomePage() {
-      if (!this.$store.state.student || !this.studentName) {
-        alert(resultMsg.STUDENT_INFO_ERROR);
-        return;
-      }
+      // if (!this.$store.state.student || !this.studentName) {
+      //   alert(resultMsg.STUDENT_INFO_ERROR);
+      //   return;
+      // }
 
       let router = this.$router;
       setTimeout(function() {

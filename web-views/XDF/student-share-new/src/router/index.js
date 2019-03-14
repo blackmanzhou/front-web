@@ -6,7 +6,6 @@ import NewStarShinePage from '@/views/NewStarShinePage'
 import ExclusiveEnergyPage from '@/views/ExclusiveEnergyPage'
 import SelfSpecialPage from '@/views/SelfSpecialPage'
 import HelpProcessPage from '@/views/HelpProcessPage'
-import TeacherMessagePage from '@/views/TeacherMessagePage'
 import WonderfulMomentsPage from '@/views/WonderfulMomentsPage'
 import ProcessWayPage from '@/views/ProcessWayPage'
 import SharePage from '@/views/SharePage'
@@ -44,11 +43,6 @@ export default new Router({
       path: '/help-process',
       name: 'HelpProcessPage',
       component: HelpProcessPage
-    },
-    {
-      path: '/teacher-message',
-      name: 'TeacherMessagePage',
-      component: TeacherMessagePage
     },
     {
       path: '/wonderful-moments',

@@ -7,9 +7,9 @@
       v-on:swiperight="goBack()"
       :swipe-options="{direction: 'horizontal'}"
     >
-      <header-title :title="title"></header-title>
+      <header-title :title="title" :className="className"></header-title>
       <div class="imgList" v-if="wonderfulMoments && wonderfulMoments.length > 0">
-        <img v-for="(item, index) in wonderfulMoments" :key="index" src="../assets/imgs/moment-1.png" alt>
+        <img v-for="(item, index) in wonderfulMoments" :key="index" :src="item" alt>
       </div>
     </v-touch>
     <run-horse :currentIndex="6"></run-horse>

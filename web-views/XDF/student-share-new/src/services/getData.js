@@ -186,11 +186,11 @@ function convertClassPerformance(performance) {
 
   if (performance) {
     newObj = {
-      application: performance.CPApplication,
-      attention: performance.CPAttention,
-      comprehension: performance.CPComprehension,
-      discipline: performance.CPDiscipline,
-      positivity: performance.CPPositivity,
+      application: performance.CPApplication || 0,
+      attention: performance.CPAttention || 0,
+      comprehension: performance.CPComprehension || 0,
+      discipline: performance.CPDiscipline || 0,
+      positivity: performance.CPPositivity || 0,
       evaluation: performance.CPNote
     };
   }

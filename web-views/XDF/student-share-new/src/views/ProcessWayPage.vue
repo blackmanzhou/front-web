@@ -81,8 +81,8 @@ export default {
   },
   methods: {
     goDetail(index) {
-      this.$router.push("/exclusive-energy");
       this.changeCurrentClass(index)
+      this.$router.push("/exclusive-energy");
     },
     changeCurrentClass(index) {
       this.$store.commit(
