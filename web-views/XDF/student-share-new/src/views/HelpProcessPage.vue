@@ -74,24 +74,21 @@ export default {
           this.convertBooks(response.recommendBooks)
         );
       }
-
-      // this.$store.commit(mutation.RECOMMENDBOOKS, constants.recommentBookList)
     },
     convertBooks(books) {
       let newBooks = [];
       if (books && books.length > 0) {
         const bookContent = books[0].Content;
-        const objStringArray = bookContent.split(";");
+        const bookArray = JSON.parse(bookContent);
 
-        if (objStringArray && objStringArray.length > 0) {
-          objStringArray.forEach(objStr => {
-            const items = objStr.split(":");
-            if (items && items.length > 0) {
-              newBooks.push({
-                bookName: items[0],
-                description: items[1]
-              });
-            }
+        if (bookArray && bookArray.length > 0) {
+          bookArray.forEach(item => {
+            newBooks.push({
+              bookName: item.bookName,
+              author: item.author,
+              imgSrc: item.imgSrc,
+              description: item.description
+            });
           });
         }
       }

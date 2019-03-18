@@ -5,7 +5,7 @@ const dev_localService = '/web-api'
 const pro_localService = 'http://stsuzhou.xdf.cn/WebApi/StudentProcessShare'
 
 // let featchStudentAccount = pro_featchStudentAccount
-let localService = dev_localService
+let localService = pro_localService
 let URL = {
     featchStudentAccountInfo: `${localService}/FetchStudentCodeByOpenId`,
     featchStudentProcessRecords: localService,
