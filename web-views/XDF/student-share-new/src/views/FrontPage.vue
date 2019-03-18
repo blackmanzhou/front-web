@@ -91,21 +91,21 @@ export default {
   methods: {
     async render(studentCode) {
       studentCode = "SZS136900";
-      // await this.getStudentBaseInfo(studentCode);
+      await this.getStudentBaseInfo(studentCode);
 
-      // if (!this.$store.state.student || !this.studentName) {
-      //   alert(resultMsg.STUDENT_INFO_ERROR);
-      //   return;
-      // }
+      if (!this.$store.state.student || !this.studentName) {
+        alert(resultMsg.STUDENT_INFO_ERROR);
+        return;
+      }
 
-      // await this.getClassesByStudentCode(studentCode);
+      await this.getClassesByStudentCode(studentCode);
     },
 
     goHomePage() {
-      // if (!this.$store.state.student || !this.studentName) {
-      //   alert(resultMsg.STUDENT_INFO_ERROR);
-      //   return;
-      // }
+      if (!this.$store.state.student || !this.studentName) {
+        alert(resultMsg.STUDENT_INFO_ERROR);
+        return;
+      }
 
       let router = this.$router;
       setTimeout(function() {
@@ -126,7 +126,7 @@ export default {
     async getClassesByStudentCode(studentCode) {
       let records = [];
       let response = await API.getProcessWayInfo(studentCode);
-      console.log(response)
+
       if (response && response.data) {
         const classList = response.data.ClassList;
         if (classList && classList.length > 0) {
@@ -154,9 +154,7 @@ export default {
           }
         }
       }
-
-      console.log(records);
-
+      
       this.$store.commit(mutation.CLASSLIST, records);
     },
 
@@ -189,6 +187,8 @@ export default {
   height: 40%;
 }
 #Front-Page .center-area {
+  position: absolute;
+  top: 45%;
   width: 100%;
   margin: 5% 0 auto;
   display: flex;

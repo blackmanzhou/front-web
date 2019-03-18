@@ -7,8 +7,12 @@
       v-on:swiperight="goBack()"
       :swipe-options="{direction: 'horizontal'}"
     >
-      <header-title :title="title"></header-title>
-      <book-list class="bookList" :booklist="recommendBooks"></book-list>
+      <header-title :title="title" :className="className"></header-title>
+      <book-list
+        v-if="recommendBooks && recommendBooks.length > 0"
+        class="bookList"
+        :booklist="recommendBooks"
+      ></book-list>
     </v-touch>
     <run-horse :currentIndex="5"></run-horse>
   </div>
@@ -60,19 +64,18 @@ export default {
       this.$router.push("/wonderful-moments");
     },
     async render() {
-    //   let response = await API.getHelpProcessInfo(
-    //     this.studentCode,
-    //     this.classCode
-    //   );
-    //   if (response && response.recommendBooks) {
-    //     this.$store.commit(
-    //       mutation.RECOMMENDBOOKS,
-    //       this.convertBooks(response.recommendBooks)
-    //     );
-    //     console.log(this.$store.state);
-    //   }
+      let response = await API.getHelpProcessInfo(
+        this.studentCode,
+        this.classCode
+      );
+      if (response && response.recommendBooks) {
+        this.$store.commit(
+          mutation.RECOMMENDBOOKS,
+          this.convertBooks(response.recommendBooks)
+        );
+      }
 
-        this.$store.commit(mutation.RECOMMENDBOOKS, constants.recommentBookList)
+      // this.$store.commit(mutation.RECOMMENDBOOKS, constants.recommentBookList)
     },
     convertBooks(books) {
       let newBooks = [];

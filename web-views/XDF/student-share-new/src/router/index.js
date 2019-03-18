@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import FrontPage from '@/views/FrontPage'
-import HomePage from '@/views/HomePage'
 import NewStarShinePage from '@/views/NewStarShinePage'
 import ExclusiveEnergyPage from '@/views/ExclusiveEnergyPage'
 import SelfSpecialPage from '@/views/SelfSpecialPage'
@@ -18,11 +17,6 @@ export default new Router({
       path: '/index',
       name: 'FrontPage',
       component: FrontPage
-    },
-    {
-      path: '/home',
-      name: 'HomePage',
-      component: HomePage
     },
     {
       path: '/new-star-shine',

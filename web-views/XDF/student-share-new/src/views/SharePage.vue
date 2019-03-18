@@ -4,8 +4,15 @@
       class="section-content border-radius-8 border-color-default"
       v-on:swipeleft="goNext()"
       v-on:swiperight="goBack()"
+      :swipe-options="{direction: 'horizontal'}"
+      :class="shareImg? '' : 'bg-no-data'"
     >  
-    <img class="margin-top-8" src="../assets/imgs/share-page.jpg" alt="">  
+
+    <img v-if="shareImg" class="margin-top-8" :src="shareImg" alt="">
+    <div v-else>
+      <header-title :title="title" :className="className"></header-title>
+      <p class="margin-8-16">{{NoDataMsg}}</p>
+    </div>
     </v-touch>
     <run-horse :currentIndex="4"></run-horse>
   </div>
@@ -16,14 +23,17 @@ import { API } from "@/services";
 import { mutation } from "@/store";
 import { resultMsg } from "@/common";
 import RunHorse from "@/components/RunHorse";
+import HeaderTitle from "@/components/HeaderTitle";
 
 export default {
   name: "SharePage",
   components: {
-    RunHorse
+    RunHorse,
+    HeaderTitle
   },
   data() {
     return {
+      title: '寄语',
       NoDataMsg: resultMsg.WAITING_FOR_TEACHER
     };
   },

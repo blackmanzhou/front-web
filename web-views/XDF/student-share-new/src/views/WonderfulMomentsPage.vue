@@ -52,21 +52,13 @@ export default {
     },
 
     goNext() {
-      console.log("lalalala...");
     },
     async render() {
-      // const studentCode = this.$store.state.student.studentCode
-      // const classCode = this.$store.state.currentClass.classCode
-      // let response = await API.getWonderfulMomentsInfo(studentCode, classCode)
-      let response = {
-        wonderfulMoments: [
-          {
-            Content: constants.wonderfulMoments
-          }
-        ]
-      };
+      const studentCode = this.$store.state.student.studentCode
+      const classCode = this.$store.state.currentClass.classCode
+      let response = await API.getWonderfulMomentsInfo(studentCode, classCode)
+      
       if (response) {
-        console.log(response);
         this.$store.commit(
           mutation.WONDERFULMOMENTS,
           this.convertWonderfulData(response.wonderfulMoments)

@@ -39,9 +39,9 @@
 }
 
 .bg-no-data {
-    background-image: url('../imgs/waiting.gif');
-    background-size: 80%;
-    background-position: center center;
+    background-image: url('../imgs/loading-students.gif');
+    background-size: 90%;
+    background-position: bottom;
     background-repeat: no-repeat;
 }
 

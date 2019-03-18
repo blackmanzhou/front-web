@@ -4,10 +4,10 @@
     class="margin-l-r-auto padding-t-b-16"
     :class="isShowBottom? 'border-bottom border-color-default': ''"
   >
-    <img src="../assets/imgs/TheKiteRunner.jpg" alt class="margin-right-8">
+    <img :src="book.imgsrc" referrer="no-referrer|origin|unsafe-url" alt class="margin-right-8">
 
     <div class="font-size-xsmall">
-      <span class="line-height-24 font-size-16">《{{book.name}}》</span>
+      <span class="line-height-24 font-size-16">{{'《' + book.name + '》' || '暂无'}}</span>
       <span class="line-height-24" style="text-indent: .625rem">{{book.author || '暂无'}}</span>
       <span class="line-height-24 text-overflow-lines two-space">{{book.summary || "暂无简介"}}</span>
     </div>

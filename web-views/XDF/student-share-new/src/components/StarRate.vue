@@ -21,7 +21,6 @@ export default {
         }
     },
     created() {
-        console.log(typeof this.score)
     }
 }
 </script>

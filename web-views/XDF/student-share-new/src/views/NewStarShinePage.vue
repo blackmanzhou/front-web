@@ -8,14 +8,14 @@
     >
       <header-title :title="title" :className="className"></header-title>
       <div class="margin-top-16 text-align-center">
-        <img v-if="gradeInfo.grade == '优秀'" style="width: 75%" src="../assets/imgs/excellent.jpg" alt>
+        <img v-if="gradeInfo.grade == '优秀' || !gradeInfo.grade" style="width: 75%" src="../assets/imgs/excellent.jpg" alt>
         <img v-else-if="gradeInfo.grade == '良好'" style="width: 75%" src="../assets/imgs/well.jpg" alt>
         <img v-else-if="gradeInfo.grade == '中等'" style="width: 75%" src="../assets/imgs/medium.jpg" alt>
         <img v-else style="width: 75%" src="../assets/imgs/bad.jpg" alt>
       </div>
-      <div style="height:55%; overflow: auto">
-        <p class="padding-r-l-16 margin-top-16">{{studentName || NoName}}同学</p>
-        <p class="two-space padding-16 font-size-15 line-height-24">{{gradeInfo.evaluation}}</p>
+      <div style="height:50%; overflow: auto" :class="gradeInfo.grade? '' : 'bg-no-data'">
+        <p class="padding-r-l-16 margin-top-16">{{studentName || NoName}}  同学</p>
+        <p class="two-space padding-16 font-size-15 line-height-24">{{gradeInfo.grade? gradeInfo.evaluation : NoDataMsg}}</p>
       </div>
     </v-touch>
     <run-horse :currentIndex="2"></run-horse>
@@ -74,7 +74,7 @@ export default {
         this.studentCode,
         this.classCode
       );
-      console.log(response);
+      
       if (response && response.data) {
         const gradeList = response.data.XDFGradeList;
         if (gradeList && gradeList.length > 0) {

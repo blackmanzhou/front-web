@@ -8,7 +8,7 @@
     >
       <header-title :title="title" :className="className"></header-title>
       <div id="radar-chart" :style="{width: '100%', height: '50%'}"></div>
-      <div style="height: 35%; overflow: auto; margin-top: -1.5rem" :class="classPerformance.teacherEvaluation? '' : 'bg-no-data'">
+      <div style="height: 40%; overflow: auto; margin-top: -1.5rem;" :class="classPerformance.teacherEvaluation? '' : 'bg-no-data'">
         <p class="padding-r-l-16">{{studentName || NoName}}同学</p>
         <p class="two-space padding-r-l-16 padding-top-8 font-size-15 line-height-24">{{classPerformance.teacherEvaluation || NoDataMsg}}</p>
       </div>
@@ -98,7 +98,6 @@ export default {
     };
   },
   mounted() {
-    console.log("echart 00000000");
     this.renderChart();
   },
   async created() {
@@ -127,7 +126,7 @@ export default {
         this.studentCode,
         this.classCode
       );
-      console.log(response);
+
       if (response && response.data) {
         this.$store.commit(
           mutation.CLASSPERFORMANCE,
@@ -156,7 +155,7 @@ export default {
       let radarChart = this.$echarts.init(
         document.getElementById("radar-chart")
       );
-      console.log(this.chartOption)
+      
       this.chartOption.series[0].data[0].value = [
         this.classPerformance.discipline,
         this.classPerformance.comprehension,
